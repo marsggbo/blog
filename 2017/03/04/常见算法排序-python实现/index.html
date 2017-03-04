@@ -1,0 +1,1004 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python,排序,算法," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="1.二分法12345678910111213141516171819202122232425262728293031#coding=utf-8def binary_search(input_array, value):    &quot;&quot;&quot;Your code goes here.&quot;&quot;&quot;    length = len(input_array)    left = 0    right = length-1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常见算法排序-python实现">
+<meta property="og:url" content="http://marsggbo.github.io/blog/2017/03/04/常见算法排序-python实现/index.html">
+<meta property="og:site_name" content="MARSGGBO">
+<meta property="og:description" content="1.二分法12345678910111213141516171819202122232425262728293031#coding=utf-8def binary_search(input_array, value):    &quot;&quot;&quot;Your code goes here.&quot;&quot;&quot;    length = len(input_array)    left = 0    right = length-1">
+<meta property="og:updated_time" content="2017-03-04T07:44:39.719Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="常见算法排序-python实现">
+<meta name="twitter:description" content="1.二分法12345678910111213141516171819202122232425262728293031#coding=utf-8def binary_search(input_array, value):    &quot;&quot;&quot;Your code goes here.&quot;&quot;&quot;    length = len(input_array)    left = 0    right = length-1">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://marsggbo.github.io/blog/2017/03/04/常见算法排序-python实现/"/>
+
+
+  <title> 常见算法排序-python实现 | MARSGGBO </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">MARSGGBO</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">完美</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/blog/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                常见算法排序-python实现
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-04T15:43:45+08:00" content="2017-03-04">
+              2017-03-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/学习/程序员/" itemprop="url" rel="index">
+                    <span itemprop="name">程序员</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/学习/程序员/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2017/03/04/常见算法排序-python实现/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/04/常见算法排序-python实现/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/blog/2017/03/04/常见算法排序-python实现/" class="leancloud_visitors" data-flag-title="常见算法排序-python实现">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>1.二分法</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">binary_search</span><span class="params">(input_array, value)</span>:</span></div><div class="line">    <span class="string">"""Your code goes here."""</span></div><div class="line">    length = len(input_array)</div><div class="line">    left = <span class="number">0</span></div><div class="line">    right = length<span class="number">-1</span></div><div class="line">    <span class="keyword">if</span> length == <span class="number">1</span>:</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span> <span class="keyword">if</span> value == input_value[<span class="number">0</span>] <span class="keyword">else</span> <span class="number">-1</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        mid = (left+right)/<span class="number">2</span></div><div class="line">        <span class="keyword">while</span>(right-left&gt;<span class="number">1</span>):</div><div class="line">            <span class="keyword">if</span> input_array[mid] == value:</div><div class="line">                <span class="keyword">return</span> mid</div><div class="line">            <span class="keyword">elif</span> input_array[mid] &gt; value:</div><div class="line">                right = mid</div><div class="line">                mid = (left+right)/<span class="number">2</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                left = mid</div><div class="line">                mid = (left+right)/<span class="number">2</span></div><div class="line">        <span class="keyword">if</span> input_array[left] == value:</div><div class="line">            <span class="keyword">return</span> left</div><div class="line">        <span class="keyword">elif</span> input_array[right] == value:</div><div class="line">            <span class="keyword">return</span> right</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> <span class="number">-1</span></div><div class="line"></div><div class="line">test_list = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">9</span>,<span class="number">11</span>,<span class="number">15</span>,<span class="number">19</span>,<span class="number">29</span>]</div><div class="line">test_val1 = <span class="number">25</span></div><div class="line">test_val2 = <span class="number">15</span></div><div class="line"><span class="keyword">print</span> (binary_search(test_list, test_val1))</div><div class="line"><span class="keyword">print</span> (binary_search(test_list, test_val2))</div></pre></td></tr></table></figure></p>
+<p><strong>2.冒泡法</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line"></div><div class="line"><span class="comment"># way=1递增排序 way=0递减排序</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubble_sort</span><span class="params">(array,way=<span class="number">1</span>)</span>:</span></div><div class="line">    length = len(array)</div><div class="line"></div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> length:</div><div class="line">        print(<span class="string">"Error!The length of array must be greater than 0.\n"</span>)</div><div class="line">        <span class="keyword">return</span> <span class="string">'Wrong array'</span> </div><div class="line"></div><div class="line">    <span class="keyword">if</span> way == <span class="number">1</span>:</div><div class="line">        <span class="keyword">while</span> length &gt; <span class="number">0</span>:</div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(length<span class="number">-1</span>):</div><div class="line">                <span class="keyword">if</span> array[i] &gt; array[i+<span class="number">1</span>]:</div><div class="line">                    array[i],array[i+<span class="number">1</span>] = array[i+<span class="number">1</span>],array[i]</div><div class="line">            length -= <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> array</div><div class="line"></div><div class="line">    <span class="keyword">elif</span> way == <span class="number">0</span>:</div><div class="line">        <span class="keyword">while</span> length &gt; <span class="number">0</span>:</div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(length<span class="number">-1</span>):</div><div class="line">                <span class="keyword">if</span> array[i] &lt; array[i+<span class="number">1</span>]:</div><div class="line">                    array[i],array[i+<span class="number">1</span>] = array[i+<span class="number">1</span>],array[i]</div><div class="line">            length -= <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> array</div><div class="line"></div><div class="line"><span class="comment"># 加入排序判断标志，可提高运行效率</span></div><div class="line"><span class="comment"># way=1递增排序 way=0递减排序</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">better_bubble_sort</span><span class="params">(array,way=<span class="number">1</span>)</span>:</span></div><div class="line">    is_sorted = <span class="keyword">True</span>    <span class="comment"># 判断记录上次遍历是否进行过交换，若没有则表示不用再遍历了</span></div><div class="line">    length = len(array)</div><div class="line"></div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> length:</div><div class="line">        print(<span class="string">"Error!The length of array must be greater than 0.\n"</span>)</div><div class="line">        <span class="keyword">return</span> <span class="string">'Wrong array'</span> </div><div class="line"></div><div class="line">    <span class="keyword">if</span> way == <span class="number">1</span>:</div><div class="line">        <span class="keyword">while</span> length &gt; <span class="number">0</span> <span class="keyword">and</span> is_sorted:</div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(length<span class="number">-1</span>):</div><div class="line">                is_sorted = <span class="keyword">False</span></div><div class="line">                <span class="keyword">if</span> array[i] &gt; array[i+<span class="number">1</span>]:</div><div class="line">                    array[i],array[i+<span class="number">1</span>] = array[i+<span class="number">1</span>],array[i]</div><div class="line">                    is_sorted = <span class="keyword">True</span></div><div class="line">            length -= <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> array</div><div class="line"></div><div class="line">    <span class="keyword">elif</span> way == <span class="number">0</span>:</div><div class="line">        <span class="keyword">while</span> length &gt; <span class="number">0</span> <span class="keyword">and</span> is_sorted:</div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(length<span class="number">-1</span>):</div><div class="line">                is_sorted = <span class="keyword">False</span></div><div class="line">                <span class="keyword">if</span> array[i] &lt; array[i+<span class="number">1</span>]:</div><div class="line">                    array[i],array[i+<span class="number">1</span>] = array[i+<span class="number">1</span>],array[i]</div><div class="line">                    is_sorted = <span class="keyword">True</span></div><div class="line">            length -= <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> array</div><div class="line"></div><div class="line"></div><div class="line">test =  [<span class="number">21</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">20</span>, <span class="number">25</span>, <span class="number">6</span>, <span class="number">21</span>, <span class="number">14</span>] </div><div class="line">print(better_bubble_sort(test,<span class="number">1</span>))</div></pre></td></tr></table></figure></p>
+<p><strong>3.插入排序</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">insert_sort</span><span class="params">(array)</span>:</span></div><div class="line">    length = len(array)</div><div class="line">    flag = array[<span class="number">0</span>]</div><div class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>,length):</div><div class="line">        <span class="comment"># 之前的</span></div><div class="line">        <span class="keyword">if</span> array[x] &lt; array[x<span class="number">-1</span>]:</div><div class="line">            flag = array[x]</div><div class="line">            y = x</div><div class="line">            <span class="keyword">while</span> y != <span class="number">0</span> <span class="keyword">and</span> array[y<span class="number">-1</span>] &gt; flag :</div><div class="line">                array[y] = array[y<span class="number">-1</span>]</div><div class="line">                y -= <span class="number">1</span></div><div class="line">            array[y] = flag</div><div class="line">    <span class="keyword">return</span> array</div><div class="line"></div><div class="line">test = [<span class="number">21</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">20</span>, <span class="number">25</span>, <span class="number">20</span>, <span class="number">3</span>]</div><div class="line">print(insert_sort(test))</div></pre></td></tr></table></figure></p>
+<p><strong>4.归并排序</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge_sort</span><span class="params">(array)</span>:</span></div><div class="line">    <span class="keyword">if</span> len(array) &lt;= <span class="number">1</span>:</div><div class="line">        <span class="keyword">return</span> array</div><div class="line"></div><div class="line">    split_index = len(array)/<span class="number">2</span></div><div class="line">    left = merge_sort(array[:split_index])</div><div class="line">    right = merge_sort(array[split_index:])</div><div class="line">    <span class="keyword">return</span> merge(left,right)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(left,right)</span>:</span></div><div class="line">    i = <span class="number">0</span></div><div class="line">    j = <span class="number">0</span></div><div class="line">    result = []</div><div class="line">    <span class="keyword">while</span> i &lt; len(left) <span class="keyword">and</span> j &lt; len(right):</div><div class="line">        <span class="keyword">if</span> left[i] &lt;= right[j]:</div><div class="line">            result.append(left[i])</div><div class="line">            i += <span class="number">1</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            result.append(right[j])</div><div class="line">            j += <span class="number">1</span></div><div class="line"></div><div class="line">    result += (left[i:])</div><div class="line">    result += (right[j:])</div><div class="line">    <span class="keyword">return</span> result</div><div class="line"></div><div class="line">a = [<span class="number">1</span>,<span class="number">2</span>]</div><div class="line">test = [<span class="number">21</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">20</span>, <span class="number">25</span>] </div><div class="line">print(merge_sort(test))</div></pre></td></tr></table></figure></p>
+<p><strong>5.选择排序</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">select_sort</span><span class="params">(array)</span>:</span></div><div class="line">    length = len(array)</div><div class="line">    <span class="comment"># mini = array[0]</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(length):</div><div class="line">        mini = array[i]</div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i,length):</div><div class="line">            <span class="keyword">if</span> array[j] &lt; mini:</div><div class="line">                mini = array[j]</div><div class="line">                array[i],array[j] = array[j],array[i]</div><div class="line">    <span class="keyword">return</span> array</div><div class="line"></div><div class="line">test = [<span class="number">21</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">20</span>, <span class="number">25</span>, <span class="number">20</span>, <span class="number">3</span>] </div><div class="line">print(select_sort(test))</div></pre></td></tr></table></figure></p>
+<p><strong>6.快速排序</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line"></div><div class="line"><span class="comment"># 递归</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">quick_sort</span><span class="params">(lists, left, right)</span>:</span></div><div class="line">    <span class="comment"># 快速排序</span></div><div class="line">    <span class="keyword">if</span> left &gt;= right:</div><div class="line">        <span class="keyword">return</span> lists</div><div class="line">    key = lists[left]</div><div class="line">    low = left</div><div class="line">    high = right</div><div class="line">    <span class="keyword">while</span> left &lt; right:</div><div class="line">        <span class="keyword">while</span> left &lt; right <span class="keyword">and</span> lists[right] &gt;= key:</div><div class="line">            right -= <span class="number">1</span></div><div class="line">        lists[left] = lists[right]</div><div class="line">        <span class="keyword">while</span> left &lt; right <span class="keyword">and</span> lists[left] &lt;= key:</div><div class="line">            left += <span class="number">1</span></div><div class="line">        lists[right] = lists[left]</div><div class="line">    lists[right] = key</div><div class="line">    quick_sort(lists, low, left - <span class="number">1</span>)</div><div class="line">    quick_sort(lists, left + <span class="number">1</span>, high)</div><div class="line">    <span class="keyword">return</span> lists</div><div class="line"></div><div class="line"></div><div class="line">test = [<span class="number">21</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">20</span>, <span class="number">25</span>, <span class="number">6</span>, <span class="number">21</span>, <span class="number">14</span>]</div><div class="line"><span class="keyword">print</span> (quick_sort(test,<span class="number">0</span>,len(test)<span class="number">-1</span>))</div></pre></td></tr></table></figure></p>
+<p><br><br><hr></p>
+<footer style="padding:10px;border-radius:10px;;text-align:center;background-color:rgb(11,12,13);color:white;"><br>written by <b style="color:tomato;font-size:16px;">MARSGGBO</b><br><br><span style="font-size:16px;"><br>2017-2-14</span><br></footer>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="E:\Hexo\Hexo\themes\next\source\images\alipay.jpg" alt="marsggbo WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="E:\Hexo\Hexo\themes\next\source\images\alipay.jpg" alt="marsggbo Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/python/" rel="tag">#python</a>
+          
+            <a href="/blog/tags/排序/" rel="tag">#排序</a>
+          
+            <a href="/blog/tags/算法/" rel="tag">#算法</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2017/02/06/flask模板教程笔记(过滤器)/" rel="next" title="flask模板教程笔记">
+                <i class="fa fa-chevron-left"></i> flask模板教程笔记
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2017/03/04/python-sorted排序详解/" rel="prev" title="python-sorted排序详解">
+                python-sorted排序详解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017/03/04/常见算法排序-python实现/"
+     data-title="常见算法排序-python实现"
+     data-content=""
+     data-url="http://marsggbo.github.io/blog/blog/2017/03/04/常见算法排序-python实现/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/04/常见算法排序-python实现/"
+           data-title="常见算法排序-python实现" data-url="http://marsggbo.github.io/blog/blog/2017/03/04/常见算法排序-python实现/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/images/avatar.jpg"
+               alt="marsggbo" />
+          <p class="site-author-name" itemprop="name">marsggbo</p>
+          <p class="site-description motion-element" itemprop="description">marsggbo的专属博客</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">marsggbo</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"marsggbo"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/blog/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/blog/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = false;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url.replace(/%2F/g,'/');
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title >= 0 || index_content >= 0 ){
+                                isMatch = true;
+								if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            } 
+							
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("CkrJ03ccWT7LXNaKgc1M7Sy2-gzGzoHsz", "GQYiNM1kvzKdYVNCbx4C5yrz");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
