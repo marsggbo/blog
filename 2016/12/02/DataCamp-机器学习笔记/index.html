@@ -1,0 +1,1035 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python,机器学习,pandas,scikit-learn,numpy," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="一、 Get the Data with Pandas链接中的csv包含的数据是Titanic乘客的数据,大体数据在文末有显示。1234567891011121314# Import the Pandas libraryimport pandas as pd# Load the train and test datasets to create two DataFramestrain_url =">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DataCamp 机器学习笔记">
+<meta property="og:url" content="http://marsggbo.github.io/blog/2016/12/02/DataCamp-机器学习笔记/index.html">
+<meta property="og:site_name" content="MARSGGBO">
+<meta property="og:description" content="一、 Get the Data with Pandas链接中的csv包含的数据是Titanic乘客的数据,大体数据在文末有显示。1234567891011121314# Import the Pandas libraryimport pandas as pd# Load the train and test datasets to create two DataFramestrain_url =">
+<meta property="og:updated_time" content="2017-01-19T07:42:10.259Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DataCamp 机器学习笔记">
+<meta name="twitter:description" content="一、 Get the Data with Pandas链接中的csv包含的数据是Titanic乘客的数据,大体数据在文末有显示。1234567891011121314# Import the Pandas libraryimport pandas as pd# Load the train and test datasets to create two DataFramestrain_url =">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://marsggbo.github.io/blog/2016/12/02/DataCamp-机器学习笔记/"/>
+
+
+  <title> DataCamp 机器学习笔记 | MARSGGBO </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">MARSGGBO</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">完美</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/blog/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                DataCamp 机器学习笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-02T23:56:00+08:00" content="2016-12-02">
+              2016-12-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/学习/程序员/" itemprop="url" rel="index">
+                    <span itemprop="name">程序员</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/学习/程序员/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2016/12/02/DataCamp-机器学习笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/02/DataCamp-机器学习笔记/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/blog/2016/12/02/DataCamp-机器学习笔记/" class="leancloud_visitors" data-flag-title="DataCamp 机器学习笔记">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>一、 Get the Data with Pandas</strong><br>链接中的csv包含的数据是Titanic乘客的数据,大体数据在文末有显示。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Import the Pandas library</span></div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"></div><div class="line"><span class="comment"># Load the train and test datasets to create two DataFrames</span></div><div class="line">train_url = <span class="string">"http://s3.amazonaws.com/assets.datacamp.com/course/Kaggle/train.csv"</span></div><div class="line">train = pd.read_csv(train_url)</div><div class="line"></div><div class="line">test_url = <span class="string">"http://s3.amazonaws.com/assets.datacamp.com/course/Kaggle/test.csv"</span></div><div class="line">test = pd.read_csv(test_url)</div><div class="line"></div><div class="line">print(type(train))</div><div class="line"></div><div class="line">&gt;&gt;&gt;</div><div class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">pandas</span>.<span class="title">core</span>.<span class="title">frame</span>.<span class="title">DataFrame</span>'&gt;</span></div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p><strong>二、 Understanding your data</strong> </p>
+<ul>
+<li><strong>1、 .describe()</strong><br>作用详见代码</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">In [<span class="number">1</span>]: test.describe()</div><div class="line">Out[<span class="number">1</span>]: </div><div class="line">       PassengerId      Pclass         Age       SibSp       Parch        Fare</div><div class="line">count   <span class="number">418.000000</span>  <span class="number">418.000000</span>  <span class="number">332.000000</span>  <span class="number">418.000000</span>  <span class="number">418.000000</span>  <span class="number">417.000000</span></div><div class="line">mean   <span class="number">1100.500000</span>    <span class="number">2.265550</span>   <span class="number">30.272590</span>    <span class="number">0.447368</span>    <span class="number">0.392344</span>   <span class="number">35.627188</span></div><div class="line">std     <span class="number">120.810458</span>    <span class="number">0.841838</span>   <span class="number">14.181209</span>    <span class="number">0.896760</span>    <span class="number">0.981429</span>   <span class="number">55.907576</span></div><div class="line">min     <span class="number">892.000000</span>    <span class="number">1.000000</span>    <span class="number">0.170000</span>    <span class="number">0.000000</span>    <span class="number">0.000000</span>    <span class="number">0.000000</span></div><div class="line"><span class="number">25</span>%     <span class="number">996.250000</span>    <span class="number">1.000000</span>   <span class="number">21.000000</span>    <span class="number">0.000000</span>    <span class="number">0.000000</span>    <span class="number">7.895800</span></div><div class="line"><span class="number">50</span>%    <span class="number">1100.500000</span>    <span class="number">3.000000</span>   <span class="number">27.000000</span>    <span class="number">0.000000</span>    <span class="number">0.000000</span>   <span class="number">14.454200</span></div><div class="line"><span class="number">75</span>%    <span class="number">1204.750000</span>    <span class="number">3.000000</span>   <span class="number">39.000000</span>    <span class="number">1.000000</span>    <span class="number">0.000000</span>   <span class="number">31.500000</span></div><div class="line">max    <span class="number">1309.000000</span>    <span class="number">3.000000</span>   <span class="number">76.000000</span>    <span class="number">8.000000</span>    <span class="number">9.000000</span>  <span class="number">512.329200</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>2、 .shape</strong> 注意没有括号</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">In [<span class="number">2</span>]: test.shape()</div><div class="line"></div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">    test.shape()</div><div class="line">TypeError: <span class="string">'tuple'</span> object <span class="keyword">is</span> <span class="keyword">not</span> callable</div><div class="line"></div><div class="line"></div><div class="line">In [<span class="number">3</span>]: test.shape</div><div class="line">Out[<span class="number">3</span>]: (<span class="number">418</span>, <span class="number">11</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>3、 value_counts()</strong><br>用于统计某一项的数据情况。例如train中包含有乘客生还信息，即”Survived”一项，1表示活，0表示die。下面用value_counts()来统计生还情况。<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">In [<span class="number">2</span>]: train[<span class="string">'Survived'</span>].value_counts()</div><div class="line">Out[<span class="number">2</span>]: </div><div class="line"><span class="number">0</span>    <span class="number">549</span></div><div class="line"><span class="number">1</span>    <span class="number">342</span></div><div class="line">Name: Survived, dtype: int64</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>value_counts()中还有<strong> normalize </strong>参数可以设定，若设定为 <strong>True</strong>，则会将结果以比率的形式显示<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">In [<span class="number">3</span>]: train[<span class="string">'Survived'</span>].value_counts(normalize=<span class="keyword">True</span>)</div><div class="line">Out[<span class="number">3</span>]: </div><div class="line"><span class="number">0</span>    <span class="number">0.616162</span></div><div class="line"><span class="number">1</span>    <span class="number">0.383838</span></div><div class="line">Name: Survived, dtype: float64</div></pre></td></tr></table></figure></p>
+<p><strong>三、 Intro to decision trees</strong></p>
+<blockquote>
+<p>学习使用 scikit-learn library</p>
+</blockquote>
+<ul>
+<li><strong>1、 Creating your first decision tree</strong><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Create the target and features numpy arrays: target, features_one</span></div><div class="line">target = train[<span class="string">'Survived'</span>].values</div><div class="line">features_one = train[[<span class="string">"Pclass"</span>, <span class="string">"Sex"</span>, <span class="string">"Age"</span>, <span class="string">"Fare"</span>]].values</div><div class="line"></div><div class="line"><span class="comment"># Fit your first decision tree: my_tree_one</span></div><div class="line">my_tree_one = tree.DecisionTreeClassifier()</div><div class="line">my_tree_one = my_tree_one.fit(features_one, target)</div><div class="line"></div><div class="line"><span class="comment"># Look at the importance and score of the included features</span></div><div class="line">print(my_tree_one.feature_importances_)</div><div class="line">print(my_tree_one.score(features_one, target))</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p><strong>target</strong>: A one-dimensional numpy array containing the target/response from the train data. (Survival in your case)<br><strong>features</strong>: A multidimensional numpy array containing the features/predictors from the train data. (ex. Sex, Age)</p>
+</blockquote>
+<p><strong>.feature<em>importances</em></strong> &amp; <strong>.score()</strong> 介绍</p>
+<blockquote>
+<p>One way to quickly see the result of your decision tree is to see the importance of the features that are included. This is done by requesting the <strong>.feature<em>importances</em></strong> attribute of your tree object. Another quick metric is the mean accuracy that you can compute using the <strong>.score()</strong> function with features_one and target as arguments.</p>
+</blockquote>
+<ul>
+<li><strong>train数据</strong><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div></pre></td><td class="code"><pre><div class="line">In [1]: train</div><div class="line">Out[1]: </div><div class="line">     PassengerId  Survived  Pclass  \</div><div class="line">0              1         0       3   </div><div class="line">1              2         1       1   </div><div class="line">2              3         1       3   </div><div class="line">3              4         1       1   </div><div class="line">4              5         0       3   </div><div class="line">5              6         0       3   </div><div class="line">6              7         0       1   </div><div class="line">7              8         0       3   </div><div class="line">8              9         1       3   </div><div class="line">9             10         1       2   </div><div class="line">10            11         1       3   </div><div class="line">11            12         1       1   </div><div class="line">12            13         0       3   </div><div class="line">13            14         0       3   </div><div class="line">14            15         0       3   </div><div class="line">15            16         1       2   </div><div class="line">16            17         0       3   </div><div class="line">17            18         1       2   </div><div class="line">18            19         0       3   </div><div class="line">19            20         1       3   </div><div class="line">20            21         0       2   </div><div class="line">21            22         1       2   </div><div class="line">22            23         1       3   </div><div class="line">23            24         1       1   </div><div class="line">24            25         0       3   </div><div class="line">25            26         1       3   </div><div class="line">26            27         0       3   </div><div class="line">27            28         0       1   </div><div class="line">28            29         1       3   </div><div class="line">29            30         0       3   </div><div class="line">..           ...       ...     ...   </div><div class="line">861          862         0       2   </div><div class="line">862          863         1       1   </div><div class="line">863          864         0       3   </div><div class="line">864          865         0       2   </div><div class="line">865          866         1       2   </div><div class="line">866          867         1       2   </div><div class="line">867          868         0       1   </div><div class="line">868          869         0       3   </div><div class="line">869          870         1       3   </div><div class="line">870          871         0       3   </div><div class="line">871          872         1       1   </div><div class="line">872          873         0       1   </div><div class="line">873          874         0       3   </div><div class="line">874          875         1       2   </div><div class="line">875          876         1       3   </div><div class="line">876          877         0       3   </div><div class="line">877          878         0       3   </div><div class="line">878          879         0       3   </div><div class="line">879          880         1       1   </div><div class="line">880          881         1       2   </div><div class="line">881          882         0       3   </div><div class="line">882          883         0       3   </div><div class="line">883          884         0       2   </div><div class="line">884          885         0       3   </div><div class="line">885          886         0       3   </div><div class="line">886          887         0       2   </div><div class="line">887          888         1       1   </div><div class="line">888          889         0       3   </div><div class="line">889          890         1       1   </div><div class="line">890          891         0       3   </div><div class="line"></div><div class="line">                                                  Name     Sex   Age  SibSp  \</div><div class="line">0                              Braund, Mr. Owen Harris    male  22.0      1   </div><div class="line">1    Cumings, Mrs. John Bradley (Florence Briggs Th...  female  38.0      1   </div><div class="line">2                               Heikkinen, Miss. Laina  female  26.0      0   </div><div class="line">3         Futrelle, Mrs. Jacques Heath (Lily May Peel)  female  35.0      1   </div><div class="line">4                             Allen, Mr. William Henry    male  35.0      0   </div><div class="line">5                                     Moran, Mr. James    male   NaN      0   </div><div class="line">6                              McCarthy, Mr. Timothy J    male  54.0      0   </div><div class="line">7                       Palsson, Master. Gosta Leonard    male   2.0      3   </div><div class="line">8    Johnson, Mrs. Oscar W (Elisabeth Vilhelmina Berg)  female  27.0      0   </div><div class="line">9                  Nasser, Mrs. Nicholas (Adele Achem)  female  14.0      1   </div><div class="line">10                     Sandstrom, Miss. Marguerite Rut  female   4.0      1   </div><div class="line">11                            Bonnell, Miss. Elizabeth  female  58.0      0   </div><div class="line">12                      Saundercock, Mr. William Henry    male  20.0      0   </div><div class="line">13                         Andersson, Mr. Anders Johan    male  39.0      1   </div><div class="line">14                Vestrom, Miss. Hulda Amanda Adolfina  female  14.0      0   </div><div class="line">15                    Hewlett, Mrs. (Mary D Kingcome)   female  55.0      0   </div><div class="line">16                                Rice, Master. Eugene    male   2.0      4   </div><div class="line">17                        Williams, Mr. Charles Eugene    male   NaN      0   </div><div class="line">18   Vander Planke, Mrs. Julius (Emelia Maria Vande...  female  31.0      1   </div><div class="line">19                             Masselmani, Mrs. Fatima  female   NaN      0   </div><div class="line">20                                Fynney, Mr. Joseph J    male  35.0      0   </div><div class="line">21                               Beesley, Mr. Lawrence    male  34.0      0   </div><div class="line">22                         McGowan, Miss. Anna "Annie"  female  15.0      0   </div><div class="line">23                        Sloper, Mr. William Thompson    male  28.0      0   </div><div class="line">24                       Palsson, Miss. Torborg Danira  female   8.0      3   </div><div class="line">25   Asplund, Mrs. Carl Oscar (Selma Augusta Emilia...  female  38.0      1   </div><div class="line">26                             Emir, Mr. Farred Chehab    male   NaN      0   </div><div class="line">27                      Fortune, Mr. Charles Alexander    male  19.0      3   </div><div class="line">28                       O'Dwyer, Miss. Ellen "Nellie"  female   NaN      0   </div><div class="line">29                                 Todoroff, Mr. Lalio    male   NaN      0   </div><div class="line">..                                                 ...     ...   ...    ...   </div><div class="line">861                        Giles, Mr. Frederick Edward    male  21.0      1   </div><div class="line">862  Swift, Mrs. Frederick Joel (Margaret Welles Ba...  female  48.0      0   </div><div class="line">863                  Sage, Miss. Dorothy Edith "Dolly"  female   NaN      8   </div><div class="line">864                             Gill, Mr. John William    male  24.0      0   </div><div class="line">865                           Bystrom, Mrs. (Karolina)  female  42.0      0   </div><div class="line">866                       Duran y More, Miss. Asuncion  female  27.0      1   </div><div class="line">867               Roebling, Mr. Washington Augustus II    male  31.0      0   </div><div class="line">868                        van Melkebeke, Mr. Philemon    male   NaN      0   </div><div class="line">869                    Johnson, Master. Harold Theodor    male   4.0      1   </div><div class="line">870                                  Balkic, Mr. Cerin    male  26.0      0   </div><div class="line">871   Beckwith, Mrs. Richard Leonard (Sallie Monypeny)  female  47.0      1   </div><div class="line">872                           Carlsson, Mr. Frans Olof    male  33.0      0   </div><div class="line">873                        Vander Cruyssen, Mr. Victor    male  47.0      0   </div><div class="line">874              Abelson, Mrs. Samuel (Hannah Wizosky)  female  28.0      1   </div><div class="line">875                   Najib, Miss. Adele Kiamie "Jane"  female  15.0      0   </div><div class="line">876                      Gustafsson, Mr. Alfred Ossian    male  20.0      0   </div><div class="line">877                               Petroff, Mr. Nedelio    male  19.0      0   </div><div class="line">878                                 Laleff, Mr. Kristo    male   NaN      0   </div><div class="line">879      Potter, Mrs. Thomas Jr (Lily Alexenia Wilson)  female  56.0      0   </div><div class="line">880       Shelley, Mrs. William (Imanita Parrish Hall)  female  25.0      0   </div><div class="line">881                                 Markun, Mr. Johann    male  33.0      0   </div><div class="line">882                       Dahlberg, Miss. Gerda Ulrika  female  22.0      0   </div><div class="line">883                      Banfield, Mr. Frederick James    male  28.0      0   </div><div class="line">884                             Sutehall, Mr. Henry Jr    male  25.0      0   </div><div class="line">885               Rice, Mrs. William (Margaret Norton)  female  39.0      0   </div><div class="line">886                              Montvila, Rev. Juozas    male  27.0      0   </div><div class="line">887                       Graham, Miss. Margaret Edith  female  19.0      0   </div><div class="line">888           Johnston, Miss. Catherine Helen "Carrie"  female   NaN      1   </div><div class="line">889                              Behr, Mr. Karl Howell    male  26.0      0   </div><div class="line">890                                Dooley, Mr. Patrick    male  32.0      0   </div><div class="line"></div><div class="line">     Parch            Ticket      Fare        Cabin Embarked  </div><div class="line">0        0         A/5 21171    7.2500          NaN        S  </div><div class="line">1        0          PC 17599   71.2833          C85        C  </div><div class="line">2        0  STON/O2. 3101282    7.9250          NaN        S  </div><div class="line">3        0            113803   53.1000         C123        S  </div><div class="line">4        0            373450    8.0500          NaN        S  </div><div class="line">5        0            330877    8.4583          NaN        Q  </div><div class="line">6        0             17463   51.8625          E46        S  </div><div class="line">7        1            349909   21.0750          NaN        S  </div><div class="line">8        2            347742   11.1333          NaN        S  </div><div class="line">9        0            237736   30.0708          NaN        C  </div><div class="line">10       1           PP 9549   16.7000           G6        S  </div><div class="line">11       0            113783   26.5500         C103        S  </div><div class="line">12       0         A/5. 2151    8.0500          NaN        S  </div><div class="line">13       5            347082   31.2750          NaN        S  </div><div class="line">14       0            350406    7.8542          NaN        S  </div><div class="line">15       0            248706   16.0000          NaN        S  </div><div class="line">16       1            382652   29.1250          NaN        Q  </div><div class="line">17       0            244373   13.0000          NaN        S  </div><div class="line">18       0            345763   18.0000          NaN        S  </div><div class="line">19       0              2649    7.2250          NaN        C  </div><div class="line">20       0            239865   26.0000          NaN        S  </div><div class="line">21       0            248698   13.0000          D56        S  </div><div class="line">22       0            330923    8.0292          NaN        Q  </div><div class="line">23       0            113788   35.5000           A6        S  </div><div class="line">24       1            349909   21.0750          NaN        S  </div><div class="line">25       5            347077   31.3875          NaN        S  </div><div class="line">26       0              2631    7.2250          NaN        C  </div><div class="line">27       2             19950  263.0000  C23 C25 C27        S  </div><div class="line">28       0            330959    7.8792          NaN        Q  </div><div class="line">29       0            349216    7.8958          NaN        S  </div><div class="line">..     ...               ...       ...          ...      ...  </div><div class="line">861      0             28134   11.5000          NaN        S  </div><div class="line">862      0             17466   25.9292          D17        S  </div><div class="line">863      2          CA. 2343   69.5500          NaN        S  </div><div class="line">864      0            233866   13.0000          NaN        S  </div><div class="line">865      0            236852   13.0000          NaN        S  </div><div class="line">866      0     SC/PARIS 2149   13.8583          NaN        C  </div><div class="line">867      0          PC 17590   50.4958          A24        S  </div><div class="line">868      0            345777    9.5000          NaN        S  </div><div class="line">869      1            347742   11.1333          NaN        S  </div><div class="line">870      0            349248    7.8958          NaN        S  </div><div class="line">871      1             11751   52.5542          D35        S  </div><div class="line">872      0               695    5.0000  B51 B53 B55        S  </div><div class="line">873      0            345765    9.0000          NaN        S  </div><div class="line">874      0         P/PP 3381   24.0000          NaN        C  </div><div class="line">875      0              2667    7.2250          NaN        C  </div><div class="line">876      0              7534    9.8458          NaN        S  </div><div class="line">877      0            349212    7.8958          NaN        S  </div><div class="line">878      0            349217    7.8958          NaN        S  </div><div class="line">879      1             11767   83.1583          C50        C  </div><div class="line">880      1            230433   26.0000          NaN        S  </div><div class="line">881      0            349257    7.8958          NaN        S  </div><div class="line">882      0              7552   10.5167          NaN        S  </div><div class="line">883      0  C.A./SOTON 34068   10.5000          NaN        S  </div><div class="line">884      0   SOTON/OQ 392076    7.0500          NaN        S  </div><div class="line">885      5            382652   29.1250          NaN        Q  </div><div class="line">886      0            211536   13.0000          NaN        S  </div><div class="line">887      0            112053   30.0000          B42        S  </div><div class="line">888      2        W./C. 6607   23.4500          NaN        S  </div><div class="line">889      0            111369   30.0000         C148        C  </div><div class="line">890      0            370376    7.7500          NaN        Q  </div><div class="line"></div><div class="line">[891 rows x 12 columns]</div></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="E:\Hexo\Hexo\themes\next\source\images\alipay.jpg" alt="marsggbo WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="E:\Hexo\Hexo\themes\next\source\images\alipay.jpg" alt="marsggbo Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/python/" rel="tag">#python</a>
+          
+            <a href="/blog/tags/机器学习/" rel="tag">#机器学习</a>
+          
+            <a href="/blog/tags/pandas/" rel="tag">#pandas</a>
+          
+            <a href="/blog/tags/scikit-learn/" rel="tag">#scikit-learn</a>
+          
+            <a href="/blog/tags/numpy/" rel="tag">#numpy</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2016/10/16/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2016/12/03/python多线程学习笔记-超详细/" rel="prev" title="python多线程学习笔记-超详细">
+                python多线程学习笔记-超详细 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/12/02/DataCamp-机器学习笔记/"
+     data-title="DataCamp 机器学习笔记"
+     data-content=""
+     data-url="http://marsggbo.github.io/blog/blog/2016/12/02/DataCamp-机器学习笔记/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/02/DataCamp-机器学习笔记/"
+           data-title="DataCamp 机器学习笔记" data-url="http://marsggbo.github.io/blog/blog/2016/12/02/DataCamp-机器学习笔记/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/images/avatar.jpg"
+               alt="marsggbo" />
+          <p class="site-author-name" itemprop="name">marsggbo</p>
+          <p class="site-description motion-element" itemprop="description">marsggbo的专属博客</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">marsggbo</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"marsggbo"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/blog/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/blog/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = false;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url.replace(/%2F/g,'/');
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title >= 0 || index_content >= 0 ){
+                                isMatch = true;
+								if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            } 
+							
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("CkrJ03ccWT7LXNaKgc1M7Sy2-gzGzoHsz", "GQYiNM1kvzKdYVNCbx4C5yrz");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
