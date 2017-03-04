@@ -94,7 +94,7 @@ operator函数是python的内置函数，提供了一系列常用的函数操作
 <meta property="og:description" content="1. operator函数在介绍sorted函数之前需要了解一下operator函数。
 operator函数是python的内置函数，提供了一系列常用的函数操作比如，operator.mul(x, y)等于x+y1234a = [1,2,3]b = [5,6,7]c = map(operator.mul, a, b)# c的值就为[5, 12, 21]
 这里只介绍它的itemgetter() 方法">
-<meta property="og:updated_time" content="2017-03-04T07:47:26.372Z">
+<meta property="og:updated_time" content="2017-03-04T07:52:05.383Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python-sorted排序详解">
 <meta name="twitter:description" content="1. operator函数在介绍sorted函数之前需要了解一下operator函数。
@@ -388,6 +388,7 @@ operator函数是python的内置函数，提供了一系列常用的函数操作
         <p><strong>1. operator函数</strong><br>在介绍sorted函数之前需要了解一下operator函数。</p>
 <p>operator函数是python的内置函数，提供了一系列常用的函数操作<br>比如，operator.mul(x, y)等于x+y<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">b = [<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>]</div><div class="line">c = map(operator.mul, a, b)</div><div class="line"><span class="comment"># c的值就为[5, 12, 21]</span></div></pre></td></tr></table></figure></p>
 <p>这里只介绍它的<strong>itemgetter()</strong> 方法，更多的介绍可参考官网。<br><a href="https://docs.python.org/3/library/operator.html" target="_blank" rel="external">operator — Standard operators as functions</a></p>
+<a id="more"></a>
 <p>operator模块提供的itemgetter函数用于获取对象的哪些维的数据，参数为一些序号（即需要获取的数据在对象中的序号），下面看例子。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">a = [1,2,3] </div><div class="line">&gt;&gt;&gt; b=operator.itemgetter(1)      //定义函数b，获取对象的第1个域的值</div><div class="line">&gt;&gt;&gt; b(a) </div><div class="line">2 </div><div class="line">&gt;&gt;&gt; b=operator.itemgetter(1,0)  //定义函数b，获取对象的第1个域和第0个的值</div><div class="line">&gt;&gt;&gt; b(a) </div><div class="line">(2, 1)</div></pre></td></tr></table></figure></p>
 <p><strong>2. sorted函数</strong><br>函数介绍：<a href="https://docs.python.org/2/library/functions.html?highlight=sorted#sorted" target="_blank" rel="external">Built-in Function</a><br>官网示例：<a href="https://docs.python.org/2/howto/sorting.html#sortinghowto" target="_blank" rel="external">Sorting HOW TO¶</a><br>函数原型：<strong>sorted(iterable[, cmp[, key[, reverse]]])</strong></p>
 <blockquote>

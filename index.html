@@ -396,136 +396,12 @@
 
       
         
-          
-            <p><strong>一、数据库的基本概念及操作</strong><br>|SQL术语/概念|  MongoDB术语/概念|   解释/说明|<br>|——|——-|——–|<br>|database|  database|   数据库|<br>|table| collection| 数据库表/集合|<br>|row|   document|   数据记录行/文档|<br>|column|    field|  数据字段/域|<br>|index| index|  索引|<br>|table| joins|      表连接,MongoDB不支持|<br>|primary key|   primary key|    主键,MongoDB自动将_id字段设置为主键|</p>
-<ul>
-<li><p><strong>创建数据库</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; use mydb</div></pre></td></tr></table></figure>
-</li>
-<li><p><strong>查看当前连接的数据库</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; db</div><div class="line"></div><div class="line">-&gt; mydb</div></pre></td></tr></table></figure>
-</li>
-<li><p><strong>查看所有的数据库</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; show dbs</div><div class="line"></div><div class="line">-&gt; mydb</div></pre></td></tr></table></figure>
-</li>
-<li><p><strong>销毁数据库</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; use local</div><div class="line"> switched to db local</div><div class="line">&gt; db.dropDatabase()</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><strong>二、集合(Collection)的基本操作</strong></p>
-<ul>
-<li><p><strong>创建集合</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; db.creationCollection('users')</div></pre></td></tr></table></figure>
-</li>
-<li><p><strong>查看创建的集合</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; show collections</div></pre></td></tr></table></figure>
-</li>
-<li><p><strong>删除集合</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; db.users.drop()</div></pre></td></tr></table></figure>
-</li>
-<li><p><strong>向集合中插入数据</strong></p>
-</li>
-</ul>
-<p>1.<strong>==insert()==</strong><br>插入数据时，如果 users 集合没有创建会自动创建。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt; use mydb</div><div class="line">switched to db mydb</div><div class="line">&gt; db.users.insert([</div><div class="line">... &#123; name : "jam",</div><div class="line">... email : "jam@qq.com"</div><div class="line">... &#125;,</div><div class="line">... &#123; name : "tom",</div><div class="line">... email : "tom@qq.com"</div><div class="line">... &#125;</div><div class="line">... ])</div></pre></td></tr></table></figure></p>
-<p>2.<strong>==使用 save()==</strong><br>插入数据时，如果 users 集合没有创建会自动创建。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt; use mydb2</div><div class="line">switched to db mydb2</div><div class="line">&gt; db.users.save([</div><div class="line">... &#123; name : "jam",</div><div class="line">... email : "jam@qq.com"</div><div class="line">... &#125;,</div><div class="line">... &#123; name : "tom",</div><div class="line">... email : "tom@qq.com"</div><div class="line">... &#125;</div><div class="line">... ])</div></pre></td></tr></table></figure></p>
-<ul>
-<li><p><strong>更新数据</strong><br><strong>db.COLLECTION_NAME.update(SELECTION_CRITERIA,UPDATED_DATA)</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; use mydb2</div><div class="line">switched to db mydb2</div><div class="line">&gt; db.mysb2.update(&#123;'name':'jam'&#125;,&#123;'name':'bob'&#125;)</div></pre></td></tr></table></figure>
-</li>
-<li><p><strong>删除数据</strong><br><strong>db.COLLECTION_NAME.remove(DELECTION_CRITERIA)</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; use mydb2</div><div class="line">switched to db mydb2</div><div class="line">&gt; db.mydb2.remove(&#123;'name':'tom'&#125;)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>操作语句</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>db.createCollection(‘COLLECTION_NAME’)</td>
-<td>创建集合</td>
-</tr>
-<tr>
-<td>db.COLLECTION.drop()</td>
-<td>删除集合</td>
-</tr>
-<tr>
-<td>db.COLLECTION_NAME.insert(document)</td>
-<td>插入文档</td>
-</tr>
-<tr>
-<td>db.COLLECTION_NAME.update(SELECTION_CRITERIA,UPDATED_DATA)</td>
-<td>更新文档</td>
-</tr>
-<tr>
-<td>db.COLLECTION_NAME.save({_id:ObjectId(),NEW_DATA})</td>
-<td>替换已存在的文档</td>
-</tr>
-<tr>
-<td>db.COLLECTION_NAME.remove(DELECTION_CRITERIA)</td>
-<td>删除文档</td>
-</tr>
-</tbody>
-</table>
-<p><strong>三、数据查询</strong></p>
-<ul>
-<li><strong>find()</strong> 语句<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; use mydb</div><div class="line">switched to db mydb</div><div class="line">&gt; db.mydb.insert(&#123;'name':'mars','age':12,'gender':'man'&#125;)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>1.不加参数时返回所有记录<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; db.mydb.find()</div><div class="line">&#123; "_id" : ObjectId("589dc5f3e86d38da8455b314"), "name" : "marsggbo" &#125;</div><div class="line">&#123; "_id" : ObjectId("589dcac5e86d38da8455b315"), "name" : "mars", "age" : 12, "gender" : "man" &#125;</div></pre></td></tr></table></figure></p>
-<p>2.带参数<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; use mydb</div><div class="line">&gt; db.mydb.find(&#123;'name':'mars'&#125;)</div><div class="line">&#123; "_id" : ObjectId("589dcac5e86d38da8455b315"), "name" : "mars", "age" : 12, "gender" : "man" &#125;</div></pre></td></tr></table></figure></p>
-<p>2.1 <strong>条件操作符1</strong></p>
-<blockquote>
-<p>(&gt;) 大于 - \$gt #greate<br>(&lt;) 小于 - \$lt #low<br>(&gt;=) 大于等于 - \$gte #equal<br>(&lt;= ) 小于等于 - \$lte</p>
-</blockquote>
-<p>2.2 <strong>条件操作符2</strong></p>
-<ul>
-<li><strong>type</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$type</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>type的值：</p>
-<blockquote>
-<p>双精度型-1<br>字符串-2<br>对象-3<br>数组-4<br>二进制数据-5<br>对象ID-7<br>布尔类型-8<br>数据-9<br>空-10<br>正则表达式-11<br>JS代码-13<br>符号-14<br>有作用域的JS代码-15<br>32位整型数-16<br>时间戳-17<br>64位整型数-18<br>Min key-255<br>Max key-127</p>
-</blockquote>
-<p>范例：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; use student</div><div class="line">switched to db student</div><div class="line">&gt; db.student.find(&#123;"name":&#123;$type:2&#125;&#125;)</div></pre></td></tr></table></figure>
-<p>查找name是字符串的文档记录</p>
-<ul>
-<li><strong>limit和skip</strong><blockquote>
-<p>limit:读取指定数量的数据记录 -limit<br>skip:读取时跳过指定数量的数据记录</p>
-</blockquote>
-</li>
-</ul>
-<p>首先查看student集合中年龄大于20的数据<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt; use student</div><div class="line">switched to db student</div><div class="line">&gt; db.student.find(&#123;'age':&#123;$gt:20&#125;&#125;)</div><div class="line">&#123; "_id" : ObjectId("589dcf6d6ac83b9ae69f63e6"), "name" : "z", "sex" : "m</div><div class="line">an", "age" : 23 &#125;</div><div class="line">&#123; "_id" : ObjectId("589dcf8f6ac83b9ae69f63e8"), "name" : "z", "sex" : "m</div><div class="line">an", "age" : 29 &#125;</div><div class="line">&#123; "_id" : ObjectId("589dd11ce3b6b824fd0620e9"), "age" : 22, "name" : "ab</div><div class="line">", "sex" : "woman" &#125;</div></pre></td></tr></table></figure></p>
-<p>限制只显示一个数据后，默认显示最前面的数据<br>(第一行命令不用重复编写，这里是因为markdown解析非得加上这句话才能高亮。。。)<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt; use student</div><div class="line">switched to db student</div><div class="line"></div><div class="line">&gt; db.student.find(&#123;'age':&#123;$gt:20&#125;&#125;).limit(1)</div><div class="line">&#123; "_id" : ObjectId("589dcf6d6ac83b9ae69f63e6"), "name" : "z", "sex" : "m</div><div class="line">an", "age" : 23 &#125;</div></pre></td></tr></table></figure></p>
-<p>跳过一条数据，则可猜想显示结果为第二个数据<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt; use student</div><div class="line">switched to db student</div><div class="line"></div><div class="line">&gt; db.student.find(&#123;'age':&#123;$gt:20&#125;&#125;).limit(1).skip(1)</div><div class="line">&#123; "_id" : ObjectId("589dcf8f6ac83b9ae69f63e8"), "name" : "z", "sex" : "m</div><div class="line">an", "age" : 29 &#125;</div></pre></td></tr></table></figure></p>
-<ul>
-<li><p><strong>pretty()</strong> 语句<br>作用是使查询输出的结果更美观</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt; use mydb</div><div class="line">&gt; db.mydb.find().pretty()</div><div class="line">&#123; "_id" : ObjectId("589dc5f3e86d38da8455b314"), "name" : "marsggbo" &#125;</div><div class="line">&#123;</div><div class="line">    "_id" : ObjectId("589dcac5e86d38da8455b315"),</div><div class="line">    "name" : "mars",</div><div class="line">    "age" : 12,</div><div class="line">    "gender" : "man"</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p><strong>sort()</strong> 排序</p>
-<blockquote>
-<p>与sqlite中的排序一样有升序和降序，其中升序用1表示，降序用-1表示 </p>
-</blockquote>
-</li>
-</ul>
-<p>示例<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&gt; use student</div><div class="line">switched to db student</div><div class="line">&gt; db.student.find().sort(&#123;'age':1&#125;)</div><div class="line">&#123; "_id" : ObjectId("589dcf866ac83b9ae69f63e7"), "name" : "z", "sex" : "f</div><div class="line">eman", "age" : 19 &#125;</div><div class="line">&#123; "_id" : ObjectId("589dd11ce3b6b824fd0620e9"), "age" : 22, "name" : "ab</div><div class="line">", "sex" : "woman" &#125;</div><div class="line">&#123; "_id" : ObjectId("589dcf6d6ac83b9ae69f63e6"), "name" : "z", "sex" : "m</div><div class="line">an", "age" : 23 &#125;</div><div class="line">&#123; "_id" : ObjectId("589dcf8f6ac83b9ae69f63e8"), "name" : "z", "sex" : "m</div><div class="line">an", "age" : 29 &#125;</div></pre></td></tr></table></figure></p>
-<p><strong>四、数据索引</strong><br><strong>ensureIndex()</strong></p>
-<blockquote>
-<p>索引通常能够极大的提高查询的效率，如果没有索引，MongoDB在读取数据时必须扫描集合中的每个文件并选取那些符合查询条件的记录。这种扫描全集合的查询效率是非常低的，特别在处理大量的数据时，查询可以要花费几十秒甚至几分钟，无疑对网站的性能是非常致命的。</p>
-</blockquote>
-<p>索引是特殊的数据结构，索引存储在一个易于遍历读取的数据集合中，索引是对数据库集合中一个文档或多个文档的值进行排序的一种结构。</p>
-<p>语法：</p>
-<pre><code>db.COLLECTION_NAME.ensureIndex({KEY:1|-1})
-</code></pre><p>同样1代表升序，-1代表降序</p>
-<p>范例：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; use student</div><div class="line">switched to db student</div><div class="line"></div><div class="line">&gt; db.student.ensureIndex(&#123;"name":1&#125;)</div></pre></td></tr></table></figure></p>
-<p>ensureIndex()的可选参数：<br>|参数|    类型| 描述|<br>| ——-  | —–|—-|<br>background| Boolean|    建立索引要不要阻塞其他数据库操作，默认为false|<br>unique| Boolean|    建立的索引是否唯一，默认false|<br>name|   string| 索引的名称，若未指定，系统自动生成|<br>dropDups|Boolean    |建立唯一索引时，是否删除重复记录，默认flase|<br>|sparse |Boolean|对文档不存在的字段数据不启用索引，默认false|<br>|expireAfterSeconds|    integer|    设置集合的生存时间，单位为秒|<br>|v| index version|  索引的版本号|<br>|weights|   document|   索引权重值，范围为1到99999|<br>|default-language|  string| 默认为英语|<br>|language_override| string| 默认值为 language|<br>范例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; db.shiyanlou.ensureIndex(&#123;&quot;user_id&quot;:1,&quot;name&quot;:1&#125;,&#123;background:1&#125;)</div></pre></td></tr></table></figure></p>
-<p>总结：<br>可以使用find进行查询，sort用于排序，ensureIndex用于建立索引，aggregate用于聚合。</p>
-
-          
+          <p><strong>一、数据库的基本概念及操作</strong><br>|SQL术语/概念|  MongoDB术语/概念|   解释/说明|<br>|——|——-|——–|<br>|database|  database|   数据库|<br>|table| collection| 数据库表/集合|<br>|row|   document|   数据记录行/文档|<br>|column|    field|  数据字段/域|<br>|index| index|  索引|<br>|table| joins|      表连接,MongoDB不支持|<br>|primary key|   primary key|    主键,MongoDB自动将_id字段设置为主键|</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/blog/2017/03/04/mongoDB学习笔记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -687,15 +563,15 @@
 
       
         
-          
-            <blockquote>
+          <blockquote>
 <p>PyQt是一个创建GUI应用程序的工具包。它是Python编程语言和Qt库的成功融合。Qt库是目前最强大的库之一。</p>
 </blockquote>
 <p>通过pyqt可以实现很多我们想要的功能，而且用起来十分方便，但是唯一的不足是中文资料太少，所以刚开始用的时候会比较麻烦，不过没关系，有了我这么个系列教程，入门还是可以的，反正我是靠这个完成了邮件管理软件的设计，虽然很low~~~</p>
-<p>下面附上链接：<br><a href="http://blog.163.com/hexin_mars_blog/blog/static/2482150402017114112430681/" target="_blank" rel="external">pyqt样式表语法笔记(上) –原创 </a><br><a href="http://blog.163.com/hexin_mars_blog/blog/static/2482150402017114112520530/#" target="_blank" rel="external">pyqt样式表语法笔记(中) –原创 </a><br><a href="http://blog.163.com/hexin_mars_blog/blog/static/248215040201711411260187/#" target="_blank" rel="external">pyqt样式表语法笔记(下) –原创 </a></p>
-<p><br><br><hr><br>written by <b style="color:tomato;font-size:16px;">MARSGGBO</b><br><span style="font-size:16px;"><br>2017-2-14</span></p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/blog/2017/03/04/pyqt入门教程/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -857,91 +733,17 @@
 
       
         
-          
-            <p>本文主要记录自己在使用linux以及vim编辑器的过程中常用到的快捷键。</p>
+          <p>本文主要记录自己在使用linux以及vim编辑器的过程中常用到的快捷键。</p>
 <p><strong>一、Linux</strong></p>
 <ul>
-<li><p><strong>1、删除文件|文件夹</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 删除文件</span></div><div class="line">$ rm filename</div><div class="line"></div><div class="line"><span class="comment"># 删除文件夹</span></div><div class="line">$ rm -r dirctory</div></pre></td></tr></table></figure>
-</li>
-<li><p><strong>2、重命名</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mv oldname newname</div></pre></td></tr></table></figure>
+<li><strong>1、删除文件|文件夹</strong><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 删除文件</span></div><div class="line">$ rm filename</div><div class="line"></div><div class="line"><span class="comment"># 删除文件夹</span></div><div class="line">$ rm -r dirctory</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>例子：将/a目录移动到/b下，并重命名为c</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mv /a /b/c</div></pre></td></tr></table></figure>
-<p><strong>二、vim</strong></p>
-<p><strong>1、移动到行首、行尾</strong></p>
-<p><strong>普通模式</strong>下:</p>
-<blockquote>
-<p>移动到行首:<strong>0</strong><br>移动到行尾:<strong>$</strong></p>
-</blockquote>
-<p><strong>2、删除整行</strong></p>
-<p><strong>普通模式</strong>:</p>
-<blockquote>
-<p>dd</p>
-</blockquote>
-<p><strong>3、编辑多个文件和切换文件</strong></p>
-<ul>
-<li>3.1 一次打开多个文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim file1 file2 ... file6</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><img src="./images/1.png" alt="一次编辑多个文件" title="一次编辑多个文件.png"></p>
-<ul>
-<li>3.2 切换文件<br><strong>命令模式</strong>:<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="keyword">open</span> filename</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><img src="./images/%E5%88%87%E6%8D%A2%E6%96%87%E4%BB%B6.png" alt="切换文件" title="切换文件.png"></p>
-<ul>
-<li>3.3 多窗口编辑文件<blockquote>
-<ul>
-<li>命令行模式下输入:sp 1.txt 打开新的横向视窗来编辑1.txt</li>
-<li>命令行模式下输入:vsp 2.txt 打开新的纵向视窗来编辑1.txt</li>
-<li>普通模式下Ctrl-w s 将当前窗口分割成两个水平的窗口</li>
-<li>普通模式下Ctrl-w v 将当前窗口分割成两个垂直的窗口</li>
-<li>普通模式下Ctrl-w q 即 :q 结束分割出来的视窗。如果在新视窗中有输入需要使用强制符！即:q!</li>
-<li>普通模式下Ctrl-w o 打开一个视窗并且隐藏之前的所有视窗</li>
-<li>普通模式下Ctrl-w j 移至下面视窗</li>
-<li>普通模式下Ctrl-w k 移至上面视窗</li>
-<li>普通模式下Ctrl-w h 移至左边视窗</li>
-<li>普通模式下Ctrl-w l 移至右边视窗</li>
-<li>普通模式下Ctrl-w J 将当前视窗移至下面</li>
-<li>普通模式下Ctrl-w K 将当前视窗移至上面</li>
-<li>普通模式下Ctrl-w H 将当前视窗移至左边</li>
-<li>普通模式下Ctrl-w L 将当前视窗移至右边</li>
-<li>普通模式下Ctrl-w - 减小视窗的高度</li>
-<li>普通模式下Ctrl-w + 增加视窗的高度</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<p><img src="./images/sp.png" alt="enter description here" title="sp.png"></p>
-<p><img src="./images/%E5%A4%9A%E7%AA%97%E5%8F%A3.png" alt="enter description here" title="多窗口.png"></p>
-<p><strong>4、跳到指定行</strong><br>普通模式下:</p>
-<blockquote>
-<p>行数 gg<br>行数 G</p>
-</blockquote>
-<p><strong>5、复制剪切粘贴</strong></p>
-<ul>
-<li><strong>剪切</strong></li>
-</ul>
-<p>1.首先，可以在命令模式下输入v进入自由选取模式，选择需要剪切的文字后，按下d就可以进行剪切了。</p>
-<p>2.其他命令模式下剪切命令：</p>
-<blockquote>
-<p>dd：剪切当前行<br>ndd：n表示大于1的数字，剪切n行<br>dw：从光标处剪切至一个单子/单词的末尾，包括空格<br>de：从光标处剪切至一个单子/单词的末尾，不包括空格<br>d$：从当前光标剪切到行末<br>d0：从当前光标位置（不包括光标位置）剪切之行首<br>d3l：从光标位置（包括光标位置）向右剪切3个字符<br>d5G：将当前行（包括当前行）至第5行（不包括它）剪切<br>d3B：从当前光标位置（不包括光标位置）反向剪切3个单词<br>dH：剪切从当前行至所显示屏幕顶行的全部行<br>dM：剪切从当前行至命令M所指定行的全部行<br>dL：剪切从当前行至所显示屏幕底的全部行</p>
-</blockquote>
-<ul>
-<li><strong>复制</strong></li>
-</ul>
-<p>1.首先，可以在命令模式下输入v进入自由选取模式，选择需要剪切的文字后，按下d就可以进行剪切了。<br>2.其他命令模式下剪切命令：</p>
-<blockquote>
-<p>yy：复制当前行<br>nyy：n表示大于1的数字，复制n行<br>yw：从光标处复制至一个单子/单词的末尾，包括空格<br>ye：从光标处复制至一个单子/单词的末尾，不包括空格<br>y$：从当前光标复制到行末<br>y0：从当前光标位置（不包括光标位置）复制之行首<br>y3l：从光标位置（包括光标位置）向右复制3个字符<br>y5G：将当前行（包括当前行）至第5行（不包括它）复制<br>y3B：从当前光标位置（不包括光标位置）反向复制3个单词</p>
-</blockquote>
-<ul>
-<li><strong>粘贴</strong><br>普通模式下输入p即可</li>
-</ul>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/blog/2017/03/04/vim使用笔记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1091,26 +893,14 @@
 
       
         
-          
-            <p><strong>1. operator函数</strong><br>在介绍sorted函数之前需要了解一下operator函数。</p>
+          <p><strong>1. operator函数</strong><br>在介绍sorted函数之前需要了解一下operator函数。</p>
 <p>operator函数是python的内置函数，提供了一系列常用的函数操作<br>比如，operator.mul(x, y)等于x+y<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">b = [<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>]</div><div class="line">c = map(operator.mul, a, b)</div><div class="line"><span class="comment"># c的值就为[5, 12, 21]</span></div></pre></td></tr></table></figure></p>
-<p>这里只介绍它的<strong>itemgetter()</strong> 方法，更多的介绍可参考官网。<br><a href="https://docs.python.org/3/library/operator.html" target="_blank" rel="external">operator — Standard operators as functions</a></p>
-<p>operator模块提供的itemgetter函数用于获取对象的哪些维的数据，参数为一些序号（即需要获取的数据在对象中的序号），下面看例子。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">a = [1,2,3] </div><div class="line">&gt;&gt;&gt; b=operator.itemgetter(1)      //定义函数b，获取对象的第1个域的值</div><div class="line">&gt;&gt;&gt; b(a) </div><div class="line">2 </div><div class="line">&gt;&gt;&gt; b=operator.itemgetter(1,0)  //定义函数b，获取对象的第1个域和第0个的值</div><div class="line">&gt;&gt;&gt; b(a) </div><div class="line">(2, 1)</div></pre></td></tr></table></figure></p>
-<p><strong>2. sorted函数</strong><br>函数介绍：<a href="https://docs.python.org/2/library/functions.html?highlight=sorted#sorted" target="_blank" rel="external">Built-in Function</a><br>官网示例：<a href="https://docs.python.org/2/howto/sorting.html#sortinghowto" target="_blank" rel="external">Sorting HOW TO¶</a><br>函数原型：<strong>sorted(iterable[, cmp[, key[, reverse]]])</strong></p>
-<blockquote>
-<p>Return a new sorted list from the items in iterable.(会返回一个重新排列好的list)<br><strong>iterable(可迭代)</strong>:可以是list也可以是dict<br><strong>cmp</strong>:可以自定义比较规则，这里不详细叙述<br><strong>key</strong>:用于比较的值<br><strong>reverse</strong>:指定是顺序还是逆序</p>
-</blockquote>
-<p>下面以dict排序为例做讲解：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">c =  &#123;<span class="string">'a'</span>: <span class="number">15</span>, <span class="string">'ab'</span>: <span class="number">6</span>, <span class="string">'bc'</span>: <span class="number">16</span>, <span class="string">'da'</span>: <span class="number">95</span>&#125;</div><div class="line"></div><div class="line">d = sorted(c.iteritems(),key=operator.itemgetter(<span class="number">0</span>),reverse=<span class="keyword">True</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>[(<span class="string">'da'</span>, <span class="number">95</span>), (<span class="string">'bc'</span>, <span class="number">16</span>), (<span class="string">'ab'</span>, <span class="number">6</span>), (<span class="string">'a'</span>, <span class="number">15</span>)]</div><div class="line"></div><div class="line">e = sorted(c.iteritems(),key=operator.itemgetter(<span class="number">0</span>),reverse=<span class="keyword">True</span>)</div><div class="line">&gt;&gt;&gt;[<span class="string">'da'</span>, <span class="string">'bc'</span>, <span class="string">'a'</span>, <span class="string">'ab'</span>]</div></pre></td></tr></table></figure></p>
-<p>1.注意区分dict加与不加<strong>iteritems()</strong> 对于结果的影响<br>2.我们的key选择的是传入参数的第0号元素，在这里即是键(keys),所以最终的排序是按照键排序，我们也可以以值作为标准进行排序，看下面示例<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">d = sorted(c.iteritems(),key=operator.itemgetter(<span class="number">1</span>),reverse=<span class="keyword">True</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>[(<span class="string">'da'</span>, <span class="number">95</span>), (<span class="string">'bc'</span>, <span class="number">16</span>), (<span class="string">'a'</span>, <span class="number">15</span>), (<span class="string">'ab'</span>, <span class="number">6</span>)]</div></pre></td></tr></table></figure></p>
-<p>看到这你会不会觉得operator的itemgetter函数可以用lambda函数实现：我们可以将上面的示例改成lambda<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">d = sorted(c.iteritems(),key=<span class="keyword">lambda</span> x:x[<span class="number">1</span>],reverse=<span class="keyword">True</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>[(<span class="string">'da'</span>, <span class="number">95</span>), (<span class="string">'bc'</span>, <span class="number">16</span>), (<span class="string">'a'</span>, <span class="number">15</span>), (<span class="string">'ab'</span>, <span class="number">6</span>)]</div></pre></td></tr></table></figure></p>
-<p>你看结果是一样一样的。</p>
-<p>文章参考：<br><a href="http://www.cnblogs.com/100thMountain/p/4719503.html" target="_blank" rel="external">Python中的sorted函数以及operator.itemgetter函数</a><br><a href="http://blog.csdn.net/lindaydk/article/details/6314444" target="_blank" rel="external">python中的operator库</a></p>
-<p><br><br><hr></p>
-<footer style="padding:10px;border-radius:10px;;text-align:center;background-color:rgb(11,12,13);color:white;"><br>written by <b style="color:tomato;font-size:16px;">MARSGGBO</b><br><br><span style="font-size:16px;"><br>2017-2-14</span><br></footer>
-
-
-
-          
+<p>这里只介绍它的<strong>itemgetter()</strong> 方法，更多的介绍可参考官网。<br><a href="https://docs.python.org/3/library/operator.html">operator — Standard operators as functions</a></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/blog/2017/03/04/python-sorted排序详解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1260,16 +1050,12 @@
 
       
         
-          
-            <p><strong>1.二分法</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">binary_search</span><span class="params">(input_array, value)</span>:</span></div><div class="line">    <span class="string">"""Your code goes here."""</span></div><div class="line">    length = len(input_array)</div><div class="line">    left = <span class="number">0</span></div><div class="line">    right = length<span class="number">-1</span></div><div class="line">    <span class="keyword">if</span> length == <span class="number">1</span>:</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span> <span class="keyword">if</span> value == input_value[<span class="number">0</span>] <span class="keyword">else</span> <span class="number">-1</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        mid = (left+right)/<span class="number">2</span></div><div class="line">        <span class="keyword">while</span>(right-left&gt;<span class="number">1</span>):</div><div class="line">            <span class="keyword">if</span> input_array[mid] == value:</div><div class="line">                <span class="keyword">return</span> mid</div><div class="line">            <span class="keyword">elif</span> input_array[mid] &gt; value:</div><div class="line">                right = mid</div><div class="line">                mid = (left+right)/<span class="number">2</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                left = mid</div><div class="line">                mid = (left+right)/<span class="number">2</span></div><div class="line">        <span class="keyword">if</span> input_array[left] == value:</div><div class="line">            <span class="keyword">return</span> left</div><div class="line">        <span class="keyword">elif</span> input_array[right] == value:</div><div class="line">            <span class="keyword">return</span> right</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> <span class="number">-1</span></div><div class="line"></div><div class="line">test_list = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">9</span>,<span class="number">11</span>,<span class="number">15</span>,<span class="number">19</span>,<span class="number">29</span>]</div><div class="line">test_val1 = <span class="number">25</span></div><div class="line">test_val2 = <span class="number">15</span></div><div class="line"><span class="keyword">print</span> (binary_search(test_list, test_val1))</div><div class="line"><span class="keyword">print</span> (binary_search(test_list, test_val2))</div></pre></td></tr></table></figure></p>
-<p><strong>2.冒泡法</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line"></div><div class="line"><span class="comment"># way=1递增排序 way=0递减排序</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubble_sort</span><span class="params">(array,way=<span class="number">1</span>)</span>:</span></div><div class="line">    length = len(array)</div><div class="line"></div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> length:</div><div class="line">        print(<span class="string">"Error!The length of array must be greater than 0.\n"</span>)</div><div class="line">        <span class="keyword">return</span> <span class="string">'Wrong array'</span> </div><div class="line"></div><div class="line">    <span class="keyword">if</span> way == <span class="number">1</span>:</div><div class="line">        <span class="keyword">while</span> length &gt; <span class="number">0</span>:</div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(length<span class="number">-1</span>):</div><div class="line">                <span class="keyword">if</span> array[i] &gt; array[i+<span class="number">1</span>]:</div><div class="line">                    array[i],array[i+<span class="number">1</span>] = array[i+<span class="number">1</span>],array[i]</div><div class="line">            length -= <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> array</div><div class="line"></div><div class="line">    <span class="keyword">elif</span> way == <span class="number">0</span>:</div><div class="line">        <span class="keyword">while</span> length &gt; <span class="number">0</span>:</div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(length<span class="number">-1</span>):</div><div class="line">                <span class="keyword">if</span> array[i] &lt; array[i+<span class="number">1</span>]:</div><div class="line">                    array[i],array[i+<span class="number">1</span>] = array[i+<span class="number">1</span>],array[i]</div><div class="line">            length -= <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> array</div><div class="line"></div><div class="line"><span class="comment"># 加入排序判断标志，可提高运行效率</span></div><div class="line"><span class="comment"># way=1递增排序 way=0递减排序</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">better_bubble_sort</span><span class="params">(array,way=<span class="number">1</span>)</span>:</span></div><div class="line">    is_sorted = <span class="keyword">True</span>    <span class="comment"># 判断记录上次遍历是否进行过交换，若没有则表示不用再遍历了</span></div><div class="line">    length = len(array)</div><div class="line"></div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> length:</div><div class="line">        print(<span class="string">"Error!The length of array must be greater than 0.\n"</span>)</div><div class="line">        <span class="keyword">return</span> <span class="string">'Wrong array'</span> </div><div class="line"></div><div class="line">    <span class="keyword">if</span> way == <span class="number">1</span>:</div><div class="line">        <span class="keyword">while</span> length &gt; <span class="number">0</span> <span class="keyword">and</span> is_sorted:</div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(length<span class="number">-1</span>):</div><div class="line">                is_sorted = <span class="keyword">False</span></div><div class="line">                <span class="keyword">if</span> array[i] &gt; array[i+<span class="number">1</span>]:</div><div class="line">                    array[i],array[i+<span class="number">1</span>] = array[i+<span class="number">1</span>],array[i]</div><div class="line">                    is_sorted = <span class="keyword">True</span></div><div class="line">            length -= <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> array</div><div class="line"></div><div class="line">    <span class="keyword">elif</span> way == <span class="number">0</span>:</div><div class="line">        <span class="keyword">while</span> length &gt; <span class="number">0</span> <span class="keyword">and</span> is_sorted:</div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(length<span class="number">-1</span>):</div><div class="line">                is_sorted = <span class="keyword">False</span></div><div class="line">                <span class="keyword">if</span> array[i] &lt; array[i+<span class="number">1</span>]:</div><div class="line">                    array[i],array[i+<span class="number">1</span>] = array[i+<span class="number">1</span>],array[i]</div><div class="line">                    is_sorted = <span class="keyword">True</span></div><div class="line">            length -= <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> array</div><div class="line"></div><div class="line"></div><div class="line">test =  [<span class="number">21</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">20</span>, <span class="number">25</span>, <span class="number">6</span>, <span class="number">21</span>, <span class="number">14</span>] </div><div class="line">print(better_bubble_sort(test,<span class="number">1</span>))</div></pre></td></tr></table></figure></p>
-<p><strong>3.插入排序</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">insert_sort</span><span class="params">(array)</span>:</span></div><div class="line">    length = len(array)</div><div class="line">    flag = array[<span class="number">0</span>]</div><div class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>,length):</div><div class="line">        <span class="comment"># 之前的</span></div><div class="line">        <span class="keyword">if</span> array[x] &lt; array[x<span class="number">-1</span>]:</div><div class="line">            flag = array[x]</div><div class="line">            y = x</div><div class="line">            <span class="keyword">while</span> y != <span class="number">0</span> <span class="keyword">and</span> array[y<span class="number">-1</span>] &gt; flag :</div><div class="line">                array[y] = array[y<span class="number">-1</span>]</div><div class="line">                y -= <span class="number">1</span></div><div class="line">            array[y] = flag</div><div class="line">    <span class="keyword">return</span> array</div><div class="line"></div><div class="line">test = [<span class="number">21</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">20</span>, <span class="number">25</span>, <span class="number">20</span>, <span class="number">3</span>]</div><div class="line">print(insert_sort(test))</div></pre></td></tr></table></figure></p>
-<p><strong>4.归并排序</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge_sort</span><span class="params">(array)</span>:</span></div><div class="line">    <span class="keyword">if</span> len(array) &lt;= <span class="number">1</span>:</div><div class="line">        <span class="keyword">return</span> array</div><div class="line"></div><div class="line">    split_index = len(array)/<span class="number">2</span></div><div class="line">    left = merge_sort(array[:split_index])</div><div class="line">    right = merge_sort(array[split_index:])</div><div class="line">    <span class="keyword">return</span> merge(left,right)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(left,right)</span>:</span></div><div class="line">    i = <span class="number">0</span></div><div class="line">    j = <span class="number">0</span></div><div class="line">    result = []</div><div class="line">    <span class="keyword">while</span> i &lt; len(left) <span class="keyword">and</span> j &lt; len(right):</div><div class="line">        <span class="keyword">if</span> left[i] &lt;= right[j]:</div><div class="line">            result.append(left[i])</div><div class="line">            i += <span class="number">1</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            result.append(right[j])</div><div class="line">            j += <span class="number">1</span></div><div class="line"></div><div class="line">    result += (left[i:])</div><div class="line">    result += (right[j:])</div><div class="line">    <span class="keyword">return</span> result</div><div class="line"></div><div class="line">a = [<span class="number">1</span>,<span class="number">2</span>]</div><div class="line">test = [<span class="number">21</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">20</span>, <span class="number">25</span>] </div><div class="line">print(merge_sort(test))</div></pre></td></tr></table></figure></p>
-<p><strong>5.选择排序</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">select_sort</span><span class="params">(array)</span>:</span></div><div class="line">    length = len(array)</div><div class="line">    <span class="comment"># mini = array[0]</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(length):</div><div class="line">        mini = array[i]</div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i,length):</div><div class="line">            <span class="keyword">if</span> array[j] &lt; mini:</div><div class="line">                mini = array[j]</div><div class="line">                array[i],array[j] = array[j],array[i]</div><div class="line">    <span class="keyword">return</span> array</div><div class="line"></div><div class="line">test = [<span class="number">21</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">20</span>, <span class="number">25</span>, <span class="number">20</span>, <span class="number">3</span>] </div><div class="line">print(select_sort(test))</div></pre></td></tr></table></figure></p>
-<p><strong>6.快速排序</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line"></div><div class="line"><span class="comment"># 递归</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">quick_sort</span><span class="params">(lists, left, right)</span>:</span></div><div class="line">    <span class="comment"># 快速排序</span></div><div class="line">    <span class="keyword">if</span> left &gt;= right:</div><div class="line">        <span class="keyword">return</span> lists</div><div class="line">    key = lists[left]</div><div class="line">    low = left</div><div class="line">    high = right</div><div class="line">    <span class="keyword">while</span> left &lt; right:</div><div class="line">        <span class="keyword">while</span> left &lt; right <span class="keyword">and</span> lists[right] &gt;= key:</div><div class="line">            right -= <span class="number">1</span></div><div class="line">        lists[left] = lists[right]</div><div class="line">        <span class="keyword">while</span> left &lt; right <span class="keyword">and</span> lists[left] &lt;= key:</div><div class="line">            left += <span class="number">1</span></div><div class="line">        lists[right] = lists[left]</div><div class="line">    lists[right] = key</div><div class="line">    quick_sort(lists, low, left - <span class="number">1</span>)</div><div class="line">    quick_sort(lists, left + <span class="number">1</span>, high)</div><div class="line">    <span class="keyword">return</span> lists</div><div class="line"></div><div class="line"></div><div class="line">test = [<span class="number">21</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">20</span>, <span class="number">25</span>, <span class="number">6</span>, <span class="number">21</span>, <span class="number">14</span>]</div><div class="line"><span class="keyword">print</span> (quick_sort(test,<span class="number">0</span>,len(test)<span class="number">-1</span>))</div></pre></td></tr></table></figure></p>
-<p><br><br><hr></p>
-<footer style="padding:10px;border-radius:10px;;text-align:center;background-color:rgb(11,12,13);color:white;"><br>written by <b style="color:tomato;font-size:16px;">MARSGGBO</b><br><br><span style="font-size:16px;"><br>2017-2-14</span><br></footer>
-          
+          <p><strong>1.二分法</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">binary_search</span><span class="params">(input_array, value)</span>:</span></div><div class="line">    <span class="string">"""Your code goes here."""</span></div><div class="line">    length = len(input_array)</div><div class="line">    left = <span class="number">0</span></div><div class="line">    right = length<span class="number">-1</span></div><div class="line">    <span class="keyword">if</span> length == <span class="number">1</span>:</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span> <span class="keyword">if</span> value == input_value[<span class="number">0</span>] <span class="keyword">else</span> <span class="number">-1</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        mid = (left+right)/<span class="number">2</span></div><div class="line">        <span class="keyword">while</span>(right-left&gt;<span class="number">1</span>):</div><div class="line">            <span class="keyword">if</span> input_array[mid] == value:</div><div class="line">                <span class="keyword">return</span> mid</div><div class="line">            <span class="keyword">elif</span> input_array[mid] &gt; value:</div><div class="line">                right = mid</div><div class="line">                mid = (left+right)/<span class="number">2</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                left = mid</div><div class="line">                mid = (left+right)/<span class="number">2</span></div><div class="line">        <span class="keyword">if</span> input_array[left] == value:</div><div class="line">            <span class="keyword">return</span> left</div><div class="line">        <span class="keyword">elif</span> input_array[right] == value:</div><div class="line">            <span class="keyword">return</span> right</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> <span class="number">-1</span></div><div class="line"></div><div class="line">test_list = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">9</span>,<span class="number">11</span>,<span class="number">15</span>,<span class="number">19</span>,<span class="number">29</span>]</div><div class="line">test_val1 = <span class="number">25</span></div><div class="line">test_val2 = <span class="number">15</span></div><div class="line"><span class="keyword">print</span> (binary_search(test_list, test_val1))</div><div class="line"><span class="keyword">print</span> (binary_search(test_list, test_val2))</div></pre></td></tr></table></figure></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/blog/2017/03/04/常见算法排序-python实现/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
