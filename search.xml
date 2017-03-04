@@ -5,7 +5,7 @@
     <entry>
       <title><![CDATA[hexo -d报错解决办法]]></title>
       <url>%2Fblog%2F2017%2F03%2F04%2Fhexo-d%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%2F</url>
-      <content type="text"><![CDATA[title: hexo -d 报错解决办法tags: grammar_cjkRuby: truehexo d的时候报错，错误信息如下：12345678$ hexo dINFO Deploying: gitINFO Clearing .deploy folder...INFO Copying files from public folder...warning: LF will be replaced by CRLF in 2015/12/05/hello-world/index.html.The file will have its original line endings in your working directory.……warning: LF will be replaced by CRLF in index.html. 在某乎上找到了答案，链接在文章最下面。 搬运工来啦： 这个问题是这样解决的 删除你hexo 下面的.deploy_git文件夹 运行 1git config -global core.autoclrf false 重新部署123hexo cleanhexo ghexo d 打开自己的网址，进行验证是否成功 作者：邹世杰链接：https://www.zhihu.com/question/38219432/answer/123443945来源：知乎 written by MARSGGBO2017-2-14]]></content>
+      <content type="text"><![CDATA[hexo d的时候报错，错误信息如下：12345678$ hexo dINFO Deploying: gitINFO Clearing .deploy folder...INFO Copying files from public folder...warning: LF will be replaced by CRLF in 2015/12/05/hello-world/index.html.The file will have its original line endings in your working directory.……warning: LF will be replaced by CRLF in index.html. 在某乎上找到了答案，链接在文章最下面。 搬运工来啦： 这个问题是这样解决的 删除你hexo 下面的.deploy_git文件夹 运行 1git config -global core.autoclrf false 重新部署123hexo cleanhexo ghexo d 打开自己的网址，进行验证是否成功 作者：邹世杰链接：https://www.zhihu.com/question/38219432/answer/123443945来源：知乎 written by MARSGGBO2017-2-14]]></content>
     </entry>
 
     
