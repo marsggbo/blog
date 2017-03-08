@@ -68,7 +68,7 @@
 <link href="/blog/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="flask,模板,python,web框架,Jinja," />
+  <meta name="keywords" content="python,机器学习,KNN," />
 
 
 
@@ -84,22 +84,35 @@
 
 
 
-<meta name="description" content="1. 渲染模板使用了Jinja2模板引擎render_template
-1from flask import render_template,Flask">
+<meta name="description" content="一、图片转字符要实现手写数字识别，那么首先需要将手写的数字转变成可读写的字符，这样才能使用KNN算法来进行后续的步骤。所以首先看看如何实现图片转字符：
+首先需要用到pillow库，怎么安装的这里就不再详述了。代码参考：用Python把图片变成字符画。
+需要注意的地方：
+
+1.为了便于后续计算，所以最后只用0和1来显示图片，即 ascii_char = list(“10”)
+2.使用方法：命令行模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Flask入门笔记（二）--模板">
-<meta property="og:url" content="http://marsggbo.github.io/blog/2017/01/16/Flask入门笔记（二）-模板/index.html">
+<meta property="og:title" content="机器学习--手写数字识别(python实现)">
+<meta property="og:url" content="http://marsggbo.github.io/blog/2017/03/08/机器学习-手写数字识别-python实现/index.html">
 <meta property="og:site_name" content="MARSGGBO">
-<meta property="og:description" content="1. 渲染模板使用了Jinja2模板引擎render_template
-1from flask import render_template,Flask">
-<meta property="og:image" content="http://p1.bqimg.com/567571/8ba8ba915e95ef6b.png">
-<meta property="og:image" content="http://p1.bqimg.com/567571/e77287e10d18a3c2.png">
-<meta property="og:updated_time" content="2017-01-19T07:41:12.065Z">
+<meta property="og:description" content="一、图片转字符要实现手写数字识别，那么首先需要将手写的数字转变成可读写的字符，这样才能使用KNN算法来进行后续的步骤。所以首先看看如何实现图片转字符：
+首先需要用到pillow库，怎么安装的这里就不再详述了。代码参考：用Python把图片变成字符画。
+需要注意的地方：
+
+1.为了便于后续计算，所以最后只用0和1来显示图片，即 ascii_char = list(“10”)
+2.使用方法：命令行模式">
+<meta property="og:image" content="http://p1.bpimg.com/567571/5fe9e93b99462637.png">
+<meta property="og:image" content="http://p1.bqimg.com/567571/494d949db27af036.png">
+<meta property="og:image" content="http://p1.bqimg.com/567571/19e3108b37f0231c.png">
+<meta property="og:updated_time" content="2017-03-08T06:55:39.964Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Flask入门笔记（二）--模板">
-<meta name="twitter:description" content="1. 渲染模板使用了Jinja2模板引擎render_template
-1from flask import render_template,Flask">
-<meta name="twitter:image" content="http://p1.bqimg.com/567571/8ba8ba915e95ef6b.png">
+<meta name="twitter:title" content="机器学习--手写数字识别(python实现)">
+<meta name="twitter:description" content="一、图片转字符要实现手写数字识别，那么首先需要将手写的数字转变成可读写的字符，这样才能使用KNN算法来进行后续的步骤。所以首先看看如何实现图片转字符：
+首先需要用到pillow库，怎么安装的这里就不再详述了。代码参考：用Python把图片变成字符画。
+需要注意的地方：
+
+1.为了便于后续计算，所以最后只用0和1来显示图片，即 ascii_char = list(“10”)
+2.使用方法：命令行模式">
+<meta name="twitter:image" content="http://p1.bpimg.com/567571/5fe9e93b99462637.png">
 
 
 
@@ -120,10 +133,10 @@
 
 
 
-  <link rel="canonical" href="http://marsggbo.github.io/blog/2017/01/16/Flask入门笔记（二）-模板/"/>
+  <link rel="canonical" href="http://marsggbo.github.io/blog/2017/03/08/机器学习-手写数字识别-python实现/"/>
 
 
-  <title> Flask入门笔记（二）--模板 | MARSGGBO </title>
+  <title> 机器学习--手写数字识别(python实现) | MARSGGBO </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -286,7 +299,7 @@
             
             
               
-                Flask入门笔记（二）--模板
+                机器学习--手写数字识别(python实现)
               
             
           </h1>
@@ -298,8 +311,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-16T18:27:59+08:00" content="2017-01-16">
-              2017-01-16
+            <time itemprop="dateCreated" datetime="2017-03-08T14:51:15+08:00" content="2017-03-08">
+              2017-03-08
             </time>
           </span>
 
@@ -364,8 +377,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/blog/2017/01/16/Flask入门笔记（二）-模板/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/16/Flask入门笔记（二）-模板/" itemprop="commentsCount"></span>
+                <a href="/blog/2017/03/08/机器学习-手写数字识别-python实现/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/08/机器学习-手写数字识别-python实现/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -375,7 +388,7 @@
 
           
           
-             <span id="/blog/2017/01/16/Flask入门笔记（二）-模板/" class="leancloud_visitors" data-flag-title="Flask入门笔记（二）--模板">
+             <span id="/blog/2017/03/08/机器学习-手写数字识别-python实现/" class="leancloud_visitors" data-flag-title="机器学习--手写数字识别(python实现)">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -397,73 +410,50 @@
       
 
       
-        <h2 id="1-渲染模板"><a href="#1-渲染模板" class="headerlink" title="1. 渲染模板"></a><strong>1. 渲染模板</strong></h2><p>使用了<strong>Jinja2</strong>模板引擎<br><strong>render_template</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> render_template,Flask</div></pre></td></tr></table></figure>
+        <h3 id="一、图片转字符"><a href="#一、图片转字符" class="headerlink" title="一、图片转字符"></a><strong>一、图片转字符</strong></h3><p>要实现手写数字识别，那么首先需要将手写的数字转变成可读写的字符，这样才能使用KNN算法来进行后续的步骤。所以首先看看如何实现图片转字符：</p>
+<p>首先需要用到pillow库，怎么安装的这里就不再详述了。<br>代码参考：<a href="http://www.jianshu.com/p/991cb07b3ad3" target="_blank" rel="external">用Python把图片变成字符画</a>。</p>
+<p>需要注意的地方：</p>
+<ul>
+<li>1.为了便于后续计算，所以最后只用0和1来显示图片，即 <strong>ascii_char = list(“10”)</strong></li>
+<li>2.<strong>使用方法</strong>：<br>命令行模式下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python pic2char.py **.png -o **.txt --width=32 --height=32</div></pre></td></tr></table></figure>
+</li>
+</ul>
 <a id="more"></a>
-<h2 id="2-变量"><a href="#2-变量" class="headerlink" title="2. 变量"></a><strong>2. 变量</strong></h2><p>Jinja2变量过滤器</p>
-<table>
-<thead>
-<tr>
-<th>过滤器名</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>safe</td>
-<td>渲染值时不转义</td>
-</tr>
-<tr>
-<td>capitalize</td>
-<td>把值的首字母转换成大写</td>
-</tr>
-<tr>
-<td>lower</td>
-<td>把值转换成小写形式</td>
-</tr>
-<tr>
-<td>upper</td>
-<td>把值转换成大写形式</td>
-</tr>
-<tr>
-<td>title</td>
-<td>把值中每个单词的首字母都转换成大 写</td>
-</tr>
-<tr>
-<td>trim</td>
-<td>把值的首尾空格去掉</td>
-</tr>
-<tr>
-<td>striptags</td>
-<td>渲染之前把值中所有的HTML标签都删掉</td>
-</tr>
-</tbody>
-</table>
-<p>示例<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># html文件</div><div class="line">hello &#123;&#123; name|capitalize&#125;&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="3-控制结构"><a href="#3-控制结构" class="headerlink" title="3. 控制结构"></a><strong>3. 控制结构</strong></h2><ul>
-<li><h3 id="条件控制语句"><a href="#条件控制语句" class="headerlink" title="条件控制语句"></a><strong>条件控制语句</strong></h3></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;% <span class="keyword">if</span> user %&#125;</div><div class="line">    Hello, &#123;&#123; user &#125;&#125;</div><div class="line">&#123;% <span class="keyword">else</span> %&#125;</div><div class="line">    Hello, Stranger!</div><div class="line">&#123;% endif %&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>之所以高宽要设为<strong>32</strong>，是因为我在学《机器学习实战》课程中给出的训练集是32*32，所以代码都是以32为基准写的；</p>
+</blockquote>
+<p>这种命令行操作模式下，只能每次操作一张图片很麻烦，所以你可以将代码改一下即可。怎么改的不详述，给个思路吧：</p>
+<ol>
+<li>使用os.listdir获取图片文件</li>
+<li>for循环依次将图片文件转为字符文件即可</li>
+</ol>
+<p><strong>pic2char.py</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#-*- coding:utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</div><div class="line"><span class="keyword">import</span> argparse</div><div class="line"></div><div class="line"><span class="comment">#命令行输入参数处理</span></div><div class="line">parser = argparse.ArgumentParser()</div><div class="line"></div><div class="line">parser.add_argument(<span class="string">'file'</span>)     <span class="comment">#输入文件</span></div><div class="line">parser.add_argument(<span class="string">'-o'</span>, <span class="string">'--output'</span>)   <span class="comment">#输出文件</span></div><div class="line">parser.add_argument(<span class="string">'--width'</span>, type = int, default = <span class="number">32</span>) <span class="comment">#输出字符画宽</span></div><div class="line">parser.add_argument(<span class="string">'--height'</span>, type = int, default = <span class="number">32</span>) <span class="comment">#输出字符画高</span></div><div class="line"></div><div class="line"><span class="comment">#获取参数</span></div><div class="line">args = parser.parse_args()</div><div class="line"></div><div class="line">IMG = args.file</div><div class="line">WIDTH = args.width</div><div class="line">HEIGHT = args.height</div><div class="line">OUTPUT = args.output</div><div class="line"></div><div class="line">ascii_char = list(<span class="string">"10"</span>)</div><div class="line"></div><div class="line"><span class="comment"># 将256灰度映射到70个字符上</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_char</span><span class="params">(r,g,b,alpha = <span class="number">256</span>)</span>:</span></div><div class="line">    <span class="keyword">if</span> alpha == <span class="number">0</span>:</div><div class="line">        <span class="keyword">return</span> <span class="string">' '</span></div><div class="line">    length = len(ascii_char)</div><div class="line">    gray = int(<span class="number">0.2126</span> * r + <span class="number">0.7152</span> * g + <span class="number">0.0722</span> * b)</div><div class="line"></div><div class="line">    unit = (<span class="number">256.0</span> + <span class="number">1</span>)/length</div><div class="line">    <span class="keyword">return</span> ascii_char[int(gray/unit)]</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line"></div><div class="line">    im = Image.open(IMG)</div><div class="line">    im = im.resize((WIDTH,HEIGHT), Image.NEAREST)</div><div class="line"></div><div class="line">    txt = <span class="string">""</span></div><div class="line"></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(HEIGHT):</div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(WIDTH):</div><div class="line">            txt += get_char(*im.getpixel((j,i)))</div><div class="line">        txt += <span class="string">'\n'</span></div><div class="line"></div><div class="line">    <span class="keyword">print</span> txt</div><div class="line"></div><div class="line">    <span class="comment">#字符画输出到文件</span></div><div class="line">    <span class="keyword">if</span> OUTPUT:</div><div class="line">        <span class="keyword">with</span> open(OUTPUT,<span class="string">'w'</span>) <span class="keyword">as</span> f:</div><div class="line">            f.write(txt)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">with</span> open(<span class="string">"output.txt"</span>,<span class="string">'w'</span>) <span class="keyword">as</span> f:</div><div class="line">            f.write(txt)</div></pre></td></tr></table></figure></p>
+<p>代码使用示例：<br><strong>图片：</strong></p>
+<p><img src="http://p1.bpimg.com/567571/5fe9e93b99462637.png" alt="3"></p>
+<p><strong>转化字符：</strong></p>
+<p><img src="http://p1.bqimg.com/567571/494d949db27af036.png" alt="图片转字符"></p>
+<h3 id="二、KNN算法实现"><a href="#二、KNN算法实现" class="headerlink" title="二、KNN算法实现"></a><strong>二、KNN算法实现</strong></h3><p>现在假设我们已经生成了足够多的训练集和测试集。</p>
+<p><img src="http://p1.bqimg.com/567571/19e3108b37f0231c.png" alt="训练集"></p>
+<h4 id="1-将每个文件数据转化成一维向量"><a href="#1-将每个文件数据转化成一维向量" class="headerlink" title="1.将每个文件数据转化成一维向量"></a><strong>1.将每个文件数据转化成一维向量</strong></h4><p>每个txt文件包含的事32 <em> 32的数据，我们可以转化成 1 </em> 1024的向量，实现代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">img2vector</span><span class="params">(filename)</span>:</span></div><div class="line">    vector = np.zeros((<span class="number">1</span>,<span class="number">1024</span>))</div><div class="line">    <span class="keyword">with</span> open(filename) <span class="keyword">as</span> f:</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">32</span>):</div><div class="line">            line = f.readline()</div><div class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">32</span>):</div><div class="line">                vector[<span class="number">0</span>,<span class="number">32</span>*i+j] = int(line[j])</div><div class="line">    <span class="keyword">return</span> vector</div></pre></td></tr></table></figure></p>
+<h4 id="2-获取训练集-测试集数据和标签"><a href="#2-获取训练集-测试集数据和标签" class="headerlink" title="2.获取训练集/测试集数据和标签"></a><strong>2.获取训练集/测试集数据和标签</strong></h4><p>我的训练集数据路径是 <strong>‘./digits/testDigits’</strong>,你需要将路径改成你的对应路径。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">traininig_set</span><span class="params">(dir=<span class="string">'./digits/testDigits'</span>)</span>:</span></div><div class="line">    <span class="comment"># 训练集</span></div><div class="line">    training_labels = []</div><div class="line">    </div><div class="line">    <span class="comment"># 训练集文件目录</span></div><div class="line">    trainig_files_list = os.listdir(dir)</div><div class="line">    trainig_nums = len(trainig_files_list)</div><div class="line">    trainig_sets = np.zeros((trainig_nums,<span class="number">1024</span>))</div><div class="line">    </div><div class="line">    i = <span class="number">0</span></div><div class="line">    <span class="comment"># 将训练集标签保存到hw_labels</span></div><div class="line">    <span class="keyword">for</span> file <span class="keyword">in</span> trainig_files_list:</div><div class="line">        training_labels.append(int(file[<span class="number">0</span>]))</div><div class="line">        trainig_sets[i,:] = img2vector(dir+file)</div><div class="line">        i += <span class="number">1</span></div><div class="line">    <span class="keyword">return</span>  trainig_sets,training_labels</div></pre></td></tr></table></figure></p>
+<p>测试集数据的获取同理。</p>
+<h4 id="3-预测"><a href="#3-预测" class="headerlink" title="3.预测"></a><strong>3.预测</strong></h4><p>步骤：</p>
 <ul>
-<li><h3 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a><strong>for循环</strong></h3></li>
+<li>根据距离计算公式计算测试数据与每一个训练数据的距离(<strong>欧几里得距离</strong>)</li>
+<li>将距离<strong>由小到大</strong>排序，并获取排序后对应的序号集</li>
+<li>统计各距离对应的训练集的标签，并排序</li>
+<li>根据统计的标签，选出<strong>标签数最多</strong>的即为预测值<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(inX,data_set,data_labels,k=<span class="number">10</span>)</span>:</span></div><div class="line">    <span class="comment"># 获取训练集的行数,假设为m</span></div><div class="line">    data_set_size = data_set.shape[<span class="number">0</span>]      </div><div class="line">    </div><div class="line">    <span class="comment"># 创建一个行数为m的矩阵，每行数据与输入数据(测试数据)相同     </span></div><div class="line">    new_inX = np.tile(inX,(data_set_size,<span class="number">1</span>))    </div><div class="line">    </div><div class="line">    <span class="comment"># 差矩阵(上面两矩阵相减)</span></div><div class="line">    diff_matrix = new_inX - data_set         </div><div class="line">    </div><div class="line">    <span class="comment"># 平方</span></div><div class="line">    sq_diff_matrix = diff_matrix**<span class="number">2</span>   </div><div class="line">    </div><div class="line">    <span class="comment"># 距离: 先求平方和，再开方</span></div><div class="line">    distance = (sq_diff_matrix.sum(axis=<span class="number">1</span>))**<span class="number">0.5</span>  </div><div class="line">    </div><div class="line">    <span class="comment"># 将距离由小到大排序，并返回对应的序号集</span></div><div class="line">    sort_distance_index = distance.argsort()</div><div class="line">    </div><div class="line">    pre_labels = &#123;&#125;</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(k):</div><div class="line">        label = data_labels[sort_distance_index[i]]</div><div class="line">        pre_labels[label] = pre_labels.get(label,<span class="number">0</span>) + <span class="number">1</span></div><div class="line">        </div><div class="line">    sorted_pre_labels = sorted(pre_labels.iteritems(),key=<span class="keyword">lambda</span> x:x[<span class="number">1</span>],reverse=<span class="keyword">True</span>)</div><div class="line">    <span class="keyword">return</span> sorted_pre_labels[<span class="number">0</span>][<span class="number">0</span>]</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">    &#123;% for comment in comments %&#125;</div><div class="line">    	<span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123; comment &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    &#123;% endfor %&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>Jinja2中支持宏。例如<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;% macro render_comment(comment)%&#125;</div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123; comment &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">&#123;% endmacro %&#125;</div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">    &#123;% for comment in comments %&#125;</div><div class="line">    	&#123;&#123; render_comment(comment) &#125;&#125;</div><div class="line">    &#123;% endfor %&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>有时会<strong>重复</strong>使用宏，所以最好保存在单独的文件中，然后在需要使用的模板中导入即可。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;% import 'macro.html' as macro %&#125;</div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">    &#123;% for comment in comments %&#125;</div><div class="line">    	&#123;&#123; macro.render_comment(comment) &#125;&#125;</div><div class="line">    &#123;% endfor %&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
-<ul>
-<li><h3 id="使用模板"><a href="#使用模板" class="headerlink" title="使用模板"></a><strong>使用模板</strong></h3></li>
-</ul>
-<p>另一种重复使用代码的强大方式是模板继承。<br>首先，创建一个名为base.html的及模板:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">	&#123;% block head %&#125;</div><div class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>&#123;% block title%&#125;&#123;% endblock %&#125;-Base HTML<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined">&#123;% block style %&#125;&#123;% endblock %&#125;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">	&#123;% endblock %&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">	这是基模板</div><div class="line">	&#123;% block body%&#125;</div><div class="line">		</div><div class="line">	&#123;% endblock %&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>衍生模板<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&#123;% extends "base.html "%&#125;</div><div class="line">&#123;% block title %&#125;Index&#123;% endblock %&#125;</div><div class="line">&#123;% block style %&#125;</div><div class="line">	body&#123;</div><div class="line">		background-color: tomato;</div><div class="line">	&#125;</div><div class="line">&#123;% endblock %&#125;</div><div class="line">&#123;% block head %&#125;</div><div class="line">	&#123;&#123; super() &#125;&#125;</div><div class="line"></div><div class="line"></div><div class="line">&#123;% endblock %&#125;</div><div class="line">&#123;% block body %&#125;</div><div class="line">	<span class="tag">&lt;<span class="name">h1</span>&gt;</span>这是衍生模板<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">&#123;% endblock %&#125;</div></pre></td></tr></table></figure></p>
-<p>效果图：</p>
-<p><img src="http://p1.bqimg.com/567571/8ba8ba915e95ef6b.png" alt=""><br>注意衍生模板中的title和style需要放在head的上面，即如果衍生模板代码是下面这样的就会重复显示内容<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&#123;% extends "base.html "%&#125;</div><div class="line">&#123;% block head %&#125;</div><div class="line">&#123;% block title %&#125;Index&#123;% endblock %&#125;</div><div class="line">&#123;% block style %&#125;</div><div class="line">	body&#123;</div><div class="line">		background-color: tomato;</div><div class="line">	&#125;</div><div class="line">&#123;% endblock %&#125;</div><div class="line">	&#123;&#123; super() &#125;&#125;</div><div class="line"></div><div class="line"></div><div class="line">&#123;% endblock %&#125;</div><div class="line">&#123;% block body %&#125;</div><div class="line">	<span class="tag">&lt;<span class="name">h1</span>&gt;</span>这是衍生模板<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">&#123;% endblock %&#125;</div></pre></td></tr></table></figure></p>
-<p>如下图</p>
-<p><img src="http://p1.bqimg.com/567571/e77287e10d18a3c2.png" alt=""><br>之所以会这样，我的理解是title和style都是head的子元素，之所以要放在head的前面是因为有 <strong>super()</strong> 这个方法会获取原来的内容，并插入到适当的位置。</p>
-<ul>
-<li><h3 id="自定义错误页面"><a href="#自定义错误页面" class="headerlink" title="自定义错误页面"></a><strong>自定义错误页面</strong></h3></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@app.errorhandler(404)</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">page_not_find</span><span class="params">(e)</span>:</span></div><div class="line">	<span class="keyword">return</span> render_template(<span class="string">'404.html'</span>),<span class="number">404</span></div><div class="line"></div><div class="line"><span class="meta">@app.errorhandler(500)</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">interval_server_error</span><span class="params">(e)</span>:</span></div><div class="line">	<span class="keyword">return</span> render_template(<span class="string">'500.html'</span>),<span class="number">500</span></div></pre></td></tr></table></figure>
+<h4 id="4-查看准确度"><a href="#4-查看准确度" class="headerlink" title="4.查看准确度"></a><strong>4.查看准确度</strong></h4><p>传入预测标签和测试标签，分别转为np.array对象后可以很方便的进行比较并得出结果。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">score</span><span class="params">(pred_labels,test_labels)</span>:</span></div><div class="line">    pred = np.array(pred_labels)</div><div class="line">    test = np.array(test_labels)</div><div class="line">    res = (pred==test).astype(int)</div><div class="line">    <span class="keyword">return</span> res.sum()*<span class="number">1.0</span>/res.shape[<span class="number">0</span>]</div></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">print(<span class="string">"获取训练集"</span>)</div><div class="line">traininig_sets , traininig_labels= traininig_set()</div><div class="line">print(<span class="string">"获取测试集"</span>)</div><div class="line">test_sets , test_labels = test_set()</div><div class="line">pred_labels = []</div><div class="line">print(<span class="string">"预测中..."</span>)</div><div class="line"><span class="keyword">for</span> test <span class="keyword">in</span> test_sets:</div><div class="line">    pred_labels.append(predict(test,traininig_sets,traininig_labels,k=<span class="number">20</span>))</div><div class="line"><span class="keyword">print</span> (<span class="string">"准确率为:"</span>)</div><div class="line">print(score(pred_labels,test_labels))</div></pre></td></tr></table></figure>
+<p>数据集和代码文件已上传至github，感兴趣的可以看一下一起学习交流。</p>
+<p><a href="https://github.com/marsggbo/MLinAction" target="_blank" rel="external">机器学习github–marsggbo</a></p>
+<p><br><br><hr></p>
+<footer style="padding:10px;border-radius:10px;;text-align:center;background-color:rgb(11,12,13);color:white;"><br>written by <b style="color:tomato;font-size:16px;">MARSGGBO</b><br><br><span style="font-size:16px;"><br>2017-2-14</span><br></footer>
+
+
+
       
     </div>
 
@@ -506,15 +496,11 @@
       
         <div class="post-tags">
           
-            <a href="/blog/tags/flask/" rel="tag">#flask</a>
-          
-            <a href="/blog/tags/模板/" rel="tag">#模板</a>
-          
             <a href="/blog/tags/python/" rel="tag">#python</a>
           
-            <a href="/blog/tags/web框架/" rel="tag">#web框架</a>
+            <a href="/blog/tags/机器学习/" rel="tag">#机器学习</a>
           
-            <a href="/blog/tags/Jinja/" rel="tag">#Jinja</a>
+            <a href="/blog/tags/KNN/" rel="tag">#KNN</a>
           
         </div>
       
@@ -523,17 +509,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/2017/01/12/Flask入门笔记（一）/" rel="next" title="Flask入门笔记(一)">
-                <i class="fa fa-chevron-left"></i> Flask入门笔记(一)
+              <a href="/blog/2017/03/04/hexo-d报错解决办法/" rel="next" title="hexo -d报错解决办法">
+                <i class="fa fa-chevron-left"></i> hexo -d报错解决办法
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/blog/2017/01/17/用两个栈实现队列/" rel="prev" title="用两个栈实现队列">
-                用两个栈实现队列 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -548,10 +530,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2017/01/16/Flask入门笔记（二）-模板/"
-     data-title="Flask入门笔记（二）--模板"
+        <div class="ds-share flat" data-thread-key="2017/03/08/机器学习-手写数字识别-python实现/"
+     data-title="机器学习--手写数字识别(python实现)"
      data-content=""
-     data-url="http://marsggbo.github.io/blog/blog/2017/01/16/Flask入门笔记（二）-模板/">
+     data-url="http://marsggbo.github.io/blog/blog/2017/03/08/机器学习-手写数字识别-python实现/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -578,8 +560,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/01/16/Flask入门笔记（二）-模板/"
-           data-title="Flask入门笔记（二）--模板" data-url="http://marsggbo.github.io/blog/blog/2017/01/16/Flask入门笔记（二）-模板/">
+      <div class="ds-thread" data-thread-key="2017/03/08/机器学习-手写数字识别-python实现/"
+           data-title="机器学习--手写数字识别(python实现)" data-url="http://marsggbo.github.io/blog/blog/2017/03/08/机器学习-手写数字识别-python实现/">
       </div>
     
   </div>
@@ -670,7 +652,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-渲染模板"><span class="nav-number">1.</span> <span class="nav-text">1. 渲染模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-变量"><span class="nav-number">2.</span> <span class="nav-text">2. 变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-控制结构"><span class="nav-number">3.</span> <span class="nav-text">3. 控制结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#条件控制语句"><span class="nav-number">3.1.</span> <span class="nav-text">条件控制语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for循环"><span class="nav-number">3.2.</span> <span class="nav-text">for循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用模板"><span class="nav-number">3.3.</span> <span class="nav-text">使用模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义错误页面"><span class="nav-number">3.4.</span> <span class="nav-text">自定义错误页面</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、图片转字符"><span class="nav-number">1.</span> <span class="nav-text">一、图片转字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、KNN算法实现"><span class="nav-number">2.</span> <span class="nav-text">二、KNN算法实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-将每个文件数据转化成一维向量"><span class="nav-number">2.1.</span> <span class="nav-text">1.将每个文件数据转化成一维向量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-获取训练集-测试集数据和标签"><span class="nav-number">2.2.</span> <span class="nav-text">2.获取训练集/测试集数据和标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-预测"><span class="nav-number">2.3.</span> <span class="nav-text">3.预测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-查看准确度"><span class="nav-number">2.4.</span> <span class="nav-text">4.查看准确度</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
