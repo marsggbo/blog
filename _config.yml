@@ -87,4 +87,4 @@ backup:
 	type: git
 	theme: next
 	repository:
-		github:  https://github.com/marsggbo/blog.git,marster
+		github:  git@github.com:marsggbo/blog.git,source
