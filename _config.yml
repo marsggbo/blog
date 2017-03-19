@@ -88,3 +88,4 @@ backup:
 	theme: next
 	repository:
 		github:  git@github.com:marsggbo/blog.git,source
+	branch: source
