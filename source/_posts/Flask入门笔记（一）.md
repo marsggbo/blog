@@ -2,6 +2,7 @@
 title: Flask入门笔记(一)
 date: 2017-01-12 15:53:47
 tags: [python,flask,web框架,基本结构]
+categories: [学习,程序员,python,flask]
 ---
 
 **一、程序的基本结构**

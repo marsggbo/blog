@@ -2,6 +2,7 @@
 title: hexo使用笔记
 date: 2016-12-03 23:47:32
 tags: [hexo,配置,主题]
+categories: [学习,程序员,hexo]
 ---
 
 **一、创建新页面**

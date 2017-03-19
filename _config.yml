@@ -60,6 +60,12 @@ time_format: HH:mm:ss
 per_page: 10
 pagination_dir: page
 
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
+
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
@@ -71,5 +77,14 @@ stylus:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/marsggbo/blog.git
+  repository: https://github.com/marsggbo/blog.git
+  # repo: https://github.com/marsggbo/blog.git
+  # repository: git@github.com:marsggbo/blog.git
   branch: gh-pages
+
+# Backup
+backup:
+	type: git
+	theme: next
+	repository:
+		github:  https://github.com/marsggbo/blog.git,source

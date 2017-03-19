@@ -2,6 +2,7 @@
 title: DataCamp 机器学习笔记
 date: 2016-12-02 23:56:00
 tags: [python, 机器学习,pandas,scikit-learn,numpy]
+categories: [学习,程序员,机器学习]
 ---
 
 **一、 Get the Data with Pandas**
