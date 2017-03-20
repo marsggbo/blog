@@ -282,6 +282,260 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2017/03/19/deepin操作系统如何设置wifi/" itemprop="url">
+                  deepin系统下如何设置wifi热点（亲测有效）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-19T19:58:53+08:00" content="2017-03-19">
+              2017-03-19
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2017/03/19/deepin操作系统如何设置wifi/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/19/deepin操作系统如何设置wifi/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/blog/2017/03/19/deepin操作系统如何设置wifi/" class="leancloud_visitors" data-flag-title="deepin系统下如何设置wifi热点（亲测有效）">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>首先必须吐槽一下linux下设置wifi太累了。。。。来来回回折腾了我好久的说。心累…</p>
+</blockquote>
+<p>好了废话不多说直接上教程，经历过的坑感兴趣的可以看文章结尾，让我们抬起头一起迎接初升的太阳~~~</p>
+<h3 id="1-我的系统环境"><a href="#1-我的系统环境" class="headerlink" title="1. 我的系统环境"></a><strong>1. 我的系统环境</strong></h3><ul>
+<li>操作系统： <strong>deepin os 15.3</strong></li>
+<li>ifconfig：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">enp2s0f1: flags=...</div><div class="line">        inet ...</div><div class="line">        inet6 ...</div><div class="line">        inet6 ...</div><div class="line">        ether ...</div><div class="line"></div><div class="line">lo: flags=...</div><div class="line">        inet ...</div><div class="line">        inet6 ...</div><div class="line">        loop ...</div><div class="line"></div><div class="line">wlp3s0: flags=...</div><div class="line">        ether ...</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>上面是我的ifconfig信息，不用管具体内容(反正我已经打了马赛克)，你只需要知道的是平常所说的<strong>wlan0</strong>对应的就是<strong>wlp3s0</strong>，<strong>eth0</strong>对应<strong>enp2s0f1</strong>。<br>之前就是因为不知道这个对应关系才折腾了那么久5555555～～～</p>
+</blockquote>
+<h3 id="2-create-ap神器"><a href="#2-create-ap神器" class="headerlink" title="2. create_ap神器"></a><strong>2. create_ap神器</strong></h3><p>贴上github地址：<a href="https://github.com/oblique/create_ap" target="_blank" rel="external">create_ap</a></p>
+<ul>
+<li><p>下载源代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> https://github.com/oblique/create_ap</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装create_ap</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> create_ap</div><div class="line">make install</div></pre></td></tr></table></figure>
+<ul>
+<li>设置wifi<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo create_ap wlp3s0 enp2s0f1  your_ap_name your_ap_password</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>your_ap_name：你要设置的热点名称<br>your_ap_password：密码<br>建议将上面的命令保存成文件，这样就不需要每次都敲这么多文字了。</p>
+<ul>
+<li>设置后输出正常的结果<br>你得到的输出应该是这个样子：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">Config dir: /tmp/create_ap.wlp3s0.conf.ggodz80K</div><div class="line">PID: 6682</div><div class="line">Creating a virtual WiFi interface... ap0 created.</div><div class="line">Network Manager found, <span class="built_in">set</span> ap0 as unmanaged device... DONE</div><div class="line">dnsmasq: Symbol `nettle_hashes<span class="string">' has different size in shared object, consider re-linking</span></div><div class="line">Sharing Internet using method: nat</div><div class="line">dnsmasq: Symbol `nettle_hashes' has different size <span class="keyword">in</span> shared object, consider re-linking</div><div class="line">hostapd <span class="built_in">command</span>-line interface: hostapd_cli -p /tmp/create_ap.wlp3s0.conf.ggodz80K/hostapd_ctrl</div><div class="line">Configuration file: /tmp/create_ap.wlp3s0.conf.ggodz80K/hostapd.conf</div><div class="line">Using interface ap0 with hwaddr  ... and ssid <span class="string">"your_ap_name"</span></div><div class="line">WARN: Low entropy detected. We recommend you to install `haveged<span class="string">'</span></div><div class="line">ap0: interface state UNINITIALIZED-&gt;ENABLEDmark text</div><div class="line">ap0: AP-ENABLED </div><div class="line">ap0: STA ...  IEEE 802.11: authenticated</div><div class="line">ap0: STA ...  IEEE 802.11: associated (aid 1)</div><div class="line">ap0: AP-STA-CONNECTED a4:44:d1:39:8b:1d</div><div class="line">ap0: STA... RADIUS: starting accounting session 58CA7D65-00000000</div><div class="line">ap0: STA... WPA: pairwise key handshake completed (RSN)</div><div class="line">ap0: STA... WPA: group key handshake completed (RSN)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<p>写在最后：<br>有用的话麻烦点个赞，想转载就转载，给个文章原地址就行了。<br><a href="http://blog.163.com/hexin_mars_blog/blog/static/248215040201721681610895/#" target="_blank" rel="external">文章原地址</a><br><a href="http://blog.163.com/hexin_mars_blog/blog/static/248215040201721681610895/#" target="_blank" rel="external">http://blog.163.com/hexin_mars_blog/blog/static/248215040201721681610895/#</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2017/03/19/hello-world/" itemprop="url">
+                  Hello World
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-19T19:51:30+08:00" content="2017-03-19">
+              2017-03-19
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2017/03/19/hello-world/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/19/hello-world/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/blog/2017/03/19/hello-world/" class="leancloud_visitors" data-flag-title="Hello World">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/blog/2017/03/19/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2017/03/12/c-学习笔记之封装篇-上/" itemprop="url">
                   c++学习笔记之封装篇(上)
                 </a>
@@ -1614,318 +1868,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2017/03/04/python-sorted排序详解/" itemprop="url">
-                  python-sorted排序详解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-04T15:45:23+08:00" content="2017-03-04">
-              2017-03-04
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/blog/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/blog/categories/学习/程序员/" itemprop="url" rel="index">
-                    <span itemprop="name">程序员</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/blog/categories/学习/程序员/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2017/03/04/python-sorted排序详解/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/04/python-sorted排序详解/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/blog/2017/03/04/python-sorted排序详解/" class="leancloud_visitors" data-flag-title="python-sorted排序详解">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><strong>1. operator函数</strong><br>在介绍sorted函数之前需要了解一下operator函数。</p>
-<p>operator函数是python的内置函数，提供了一系列常用的函数操作<br>比如，operator.mul(x, y)等于x+y<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">b = [<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>]</div><div class="line">c = map(operator.mul, a, b)</div><div class="line"><span class="comment"># c的值就为[5, 12, 21]</span></div></pre></td></tr></table></figure></p>
-<p>这里只介绍它的<strong>itemgetter()</strong> 方法，更多的介绍可参考官网。<br><a href="https://docs.python.org/3/library/operator.html">operator — Standard operators as functions</a></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/2017/03/04/python-sorted排序详解/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2017/03/04/常见算法排序-python实现/" itemprop="url">
-                  常见算法排序-python实现
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-04T15:43:45+08:00" content="2017-03-04">
-              2017-03-04
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/blog/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/blog/categories/学习/程序员/" itemprop="url" rel="index">
-                    <span itemprop="name">程序员</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/blog/categories/学习/程序员/数据结构/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2017/03/04/常见算法排序-python实现/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/04/常见算法排序-python实现/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/blog/2017/03/04/常见算法排序-python实现/" class="leancloud_visitors" data-flag-title="常见算法排序-python实现">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><strong>1.二分法</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">binary_search</span><span class="params">(input_array, value)</span>:</span></div><div class="line">    <span class="string">"""Your code goes here."""</span></div><div class="line">    length = len(input_array)</div><div class="line">    left = <span class="number">0</span></div><div class="line">    right = length<span class="number">-1</span></div><div class="line">    <span class="keyword">if</span> length == <span class="number">1</span>:</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span> <span class="keyword">if</span> value == input_value[<span class="number">0</span>] <span class="keyword">else</span> <span class="number">-1</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        mid = (left+right)/<span class="number">2</span></div><div class="line">        <span class="keyword">while</span>(right-left&gt;<span class="number">1</span>):</div><div class="line">            <span class="keyword">if</span> input_array[mid] == value:</div><div class="line">                <span class="keyword">return</span> mid</div><div class="line">            <span class="keyword">elif</span> input_array[mid] &gt; value:</div><div class="line">                right = mid</div><div class="line">                mid = (left+right)/<span class="number">2</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                left = mid</div><div class="line">                mid = (left+right)/<span class="number">2</span></div><div class="line">        <span class="keyword">if</span> input_array[left] == value:</div><div class="line">            <span class="keyword">return</span> left</div><div class="line">        <span class="keyword">elif</span> input_array[right] == value:</div><div class="line">            <span class="keyword">return</span> right</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> <span class="number">-1</span></div><div class="line"></div><div class="line">test_list = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">9</span>,<span class="number">11</span>,<span class="number">15</span>,<span class="number">19</span>,<span class="number">29</span>]</div><div class="line">test_val1 = <span class="number">25</span></div><div class="line">test_val2 = <span class="number">15</span></div><div class="line"><span class="keyword">print</span> (binary_search(test_list, test_val1))</div><div class="line"><span class="keyword">print</span> (binary_search(test_list, test_val2))</div></pre></td></tr></table></figure></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/2017/03/04/常见算法排序-python实现/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1971,7 +1913,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1988,7 +1930,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags">
-                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
