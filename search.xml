@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[atom如何实现列选择操作]]></title>
+      <url>%2Fblog%2F2017%2F03%2F24%2Fatom%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%88%97%E9%80%89%E6%8B%A9%E6%93%8D%E4%BD%9C%2F</url>
+      <content type="text"><![CDATA[atom列选择插件推荐 链接：sublime-style-column-selection 安装方法 1apm install sublime-style-column-selection 后续步骤 安装好后我的电脑上并不能马上用这个插件，所以建议重启atom，然后进入到atom的设置界面，找到sublime-style-column-selection这个包，点击设置，将键盘的快捷键改为Alt即可了(不该也行，linux下默认是shift) 官方介绍写地很详细，有什么不懂的可以看看那上面的介绍。https://atom.io/packages/Sublime-Style-Column-Selection]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[deepin系统下如何设置wifi热点（亲测有效）]]></title>
       <url>%2Fblog%2F2017%2F03%2F19%2Fdeepin%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AEwifi%2F</url>
       <content type="text"><![CDATA[首先必须吐槽一下linux下设置wifi太累了。。。。来来回回折腾了我好久的说。心累… 好了废话不多说直接上教程，经历过的坑感兴趣的可以看文章结尾，让我们抬起头一起迎接初升的太阳~~~ 1. 我的系统环境 操作系统： deepin os 15.3 ifconfig：12345678910111213enp2s0f1: flags=... inet ... inet6 ... inet6 ... ether ...lo: flags=... inet ... inet6 ... loop ...wlp3s0: flags=... ether ... 上面是我的ifconfig信息，不用管具体内容(反正我已经打了马赛克)，你只需要知道的是平常所说的wlan0对应的就是wlp3s0，eth0对应enp2s0f1。之前就是因为不知道这个对应关系才折腾了那么久5555555～～～ 2. create_ap神器贴上github地址：create_ap 下载源代码 1git clone https://github.com/oblique/create_ap 安装create_ap 12cd create_apmake install 设置wifi1sudo create_ap wlp3s0 enp2s0f1 your_ap_name your_ap_password your_ap_name：你要设置的热点名称your_ap_password：密码建议将上面的命令保存成文件，这样就不需要每次都敲这么多文字了。 设置后输出正常的结果你得到的输出应该是这个样子：12345678910111213141516171819Config dir: /tmp/create_ap.wlp3s0.conf.ggodz80KPID: 6682Creating a virtual WiFi interface... ap0 created.Network Manager found, set ap0 as unmanaged device... DONEdnsmasq: Symbol `nettle_hashes' has different size in shared object, consider re-linkingSharing Internet using method: natdnsmasq: Symbol `nettle_hashes' has different size in shared object, consider re-linkinghostapd command-line interface: hostapd_cli -p /tmp/create_ap.wlp3s0.conf.ggodz80K/hostapd_ctrlConfiguration file: /tmp/create_ap.wlp3s0.conf.ggodz80K/hostapd.confUsing interface ap0 with hwaddr ... and ssid "your_ap_name"WARN: Low entropy detected. We recommend you to install `haveged'ap0: interface state UNINITIALIZED-&gt;ENABLEDmark textap0: AP-ENABLED ap0: STA ... IEEE 802.11: authenticatedap0: STA ... IEEE 802.11: associated (aid 1)ap0: AP-STA-CONNECTED a4:44:d1:39:8b:1dap0: STA... RADIUS: starting accounting session 58CA7D65-00000000ap0: STA... WPA: pairwise key handshake completed (RSN)ap0: STA... WPA: group key handshake completed (RSN) 写在最后：有用的话麻烦点个赞，想转载就转载，给个文章原地址就行了。文章原地址http://blog.163.com/hexin_mars_blog/blog/static/248215040201721681610895/#]]></content>
