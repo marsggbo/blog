@@ -86,22 +86,14 @@
 
 <meta name="description" content="一、const常量如图所示，const有两种使用情况，总结起来就是const离谁近，就作用于谁，具体看下面示例：
 
-const int * pconst作用于p，所以 p不能变化，但是p可以重新赋值
-
-
-
-int * const pconst作用于p，所以p不能变化">
+const int * p">
 <meta property="og:type" content="article">
 <meta property="og:title" content="c++学习笔记之内存管理">
 <meta property="og:url" content="http://marsggbo.github.io/blog/2017/03/12/c-学习笔记之内存管理/index.html">
 <meta property="og:site_name" content="MARSGGBO">
 <meta property="og:description" content="一、const常量如图所示，const有两种使用情况，总结起来就是const离谁近，就作用于谁，具体看下面示例：
 
-const int * pconst作用于p，所以 p不能变化，但是p可以重新赋值
-
-
-
-int * const pconst作用于p，所以p不能变化">
+const int * p">
 <meta property="og:image" content="http://wx3.sinaimg.cn/large/83e758c9ly1fdjv2z28hbj20nj0d8gmq.jpg">
 <meta property="og:image" content="http://wx3.sinaimg.cn/large/83e758c9ly1fdjv4z3x01j20ni0dcmyq.jpg">
 <meta property="og:image" content="http://wx2.sinaimg.cn/large/83e758c9ly1fdjv6aot9bj20nj0d9gn4.jpg">
@@ -111,16 +103,12 @@ int * const pconst作用于p，所以p不能变化">
 <meta property="og:image" content="http://wx4.sinaimg.cn/large/83e758c9ly1fdjvdgqidgj20ng0d7q4i.jpg">
 <meta property="og:image" content="http://wx1.sinaimg.cn/large/83e758c9ly1fdjvenv36pj20ng0d4tae.jpg">
 <meta property="og:image" content="http://wx2.sinaimg.cn/large/83e758c9ly1fdjvf1qvt3j20nh0d5gnk.jpg">
-<meta property="og:updated_time" content="2017-03-19T11:51:30.250Z">
+<meta property="og:updated_time" content="2017-03-26T09:20:40.616Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="c++学习笔记之内存管理">
 <meta name="twitter:description" content="一、const常量如图所示，const有两种使用情况，总结起来就是const离谁近，就作用于谁，具体看下面示例：
 
-const int * pconst作用于p，所以 p不能变化，但是p可以重新赋值
-
-
-
-int * const pconst作用于p，所以p不能变化">
+const int * p">
 <meta name="twitter:image" content="http://wx3.sinaimg.cn/large/83e758c9ly1fdjv2z28hbj20nj0d8gmq.jpg">
 
 
@@ -409,14 +397,15 @@ int * const pconst作用于p，所以p不能变化">
       
         <h3 id="一、const常量"><a href="#一、const常量" class="headerlink" title="一、const常量"></a><strong>一、const常量</strong></h3><p><img src="http://wx3.sinaimg.cn/large/83e758c9ly1fdjv2z28hbj20nj0d8gmq.jpg" alt="const使用方法" title="const使用方法"><br>如图所示，const有两种使用情况，总结起来就是const离谁近，就作用于谁，具体看下面示例：</p>
 <ul>
-<li><strong>const int * p</strong><br>const作用于<em>p，所以 </em>p不能变化，但是p可以重新赋值</li>
+<li><strong>const int * p</strong></li>
 </ul>
+<a id="more"></a>
+<p>const作用于<em>p，所以 </em>p不能变化，但是p可以重新赋值</p>
 <p><img src="http://wx3.sinaimg.cn/large/83e758c9ly1fdjv4z3x01j20ni0dcmyq.jpg" alt="const int * p" title="const int * p"></p>
 <ul>
 <li><strong>int * const p</strong><br>const作用于p，所以p不能变化</li>
 </ul>
 <p><img src="http://wx2.sinaimg.cn/large/83e758c9ly1fdjv6aot9bj20nj0d9gn4.jpg" alt="int * const p" title="int * const p"></p>
-<a id="more"></a>
 <ul>
 <li><strong>const int * const p</strong><br>这种情况下，p和*p都能不重新赋值。</li>
 </ul>
@@ -604,7 +593,7 @@ int * const pconst作用于p，所以p不能变化">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -612,7 +601,7 @@ int * const pconst作用于p，所以p不能变化">
           
             <div class="site-state-item site-state-categories">
               <a href="/blog/categories">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -621,7 +610,7 @@ int * const pconst作用于p，所以p不能变化">
           
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags">
-                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-count">58</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
