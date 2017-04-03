@@ -47,7 +47,7 @@
     <entry>
       <title><![CDATA[c++学习笔记之内存管理]]></title>
       <url>%2Fblog%2F2017%2F03%2F12%2Fc-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%2F</url>
-      <content type="text"><![CDATA[一、const常量如图所示，const有两种使用情况，总结起来就是const离谁近，就作用于谁，具体看下面示例： const int * p const作用于 p ，所以 p 不能变化，但是p可以重新赋值 int * const pconst作用于p，所以p不能变化 const int * const p这种情况下，p和*p都能不重新赋值。 为更好理解，下面给出一道例题： 二、内存管理 c与c++的区别 单个变量内存的申请和释放 块内存的申请和释放 注意事项 1.在申请完内存后，不仅需要注意释放内存，另外还需要注意判断内存是否成功申请,另外如果没有申请成功，仍然需要对指针做释放操作和重定向为NULL.1234567891011121314// 申请内存int *arr = new int[1000];// 判断申请成功与否if(arr==NULL) // 申请失败&#123; cout&lt;&lt;"内存申请失败"&lt;&lt;endl; // 异常处理&#125;// 释放指针delete []arr;// 重定向arr = NULL; 2.new运算符申请的内存是在堆中申请的。 written by MARSGGBO2017-3-11]]></content>
+      <content type="text"><![CDATA[一、const常量如图所示，const有两种使用情况，总结起来就是const离谁近，就作用于谁，具体看下面示例： const int * p const作用于*p，所以不能变化*p，但是p可以重新赋值 int * const pconst作用于p，所以p不能变化 const int * const p这种情况下，p和*p都能不重新赋值。 为更好理解，下面给出一道例题： 二、内存管理 c与c++的区别 单个变量内存的申请和释放 块内存的申请和释放 注意事项 1.在申请完内存后，不仅需要注意释放内存，另外还需要注意判断内存是否成功申请,另外如果没有申请成功，仍然需要对指针做释放操作和重定向为NULL.1234567891011121314// 申请内存int *arr = new int[1000];// 判断申请成功与否if(arr==NULL) // 申请失败&#123; cout&lt;&lt;"内存申请失败"&lt;&lt;endl; // 异常处理&#125;// 释放指针delete []arr;// 重定向arr = NULL; 2.new运算符申请的内存是在堆中申请的。 written by MARSGGBO2017-3-11]]></content>
     </entry>
 
     
