@@ -3,13 +3,6 @@
   
     
     <entry>
-      <title><![CDATA[deepin系统下如何设置wifi热点（亲测有效）]]></title>
-      <url>%2Fblog%2F2017%2F03%2F26%2Fdeepin%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AEwifi%2F</url>
-      <content type="text"><![CDATA[首先必须吐槽一下linux下设置wifi太累了。。。。来来回回折腾了我好久的说。心累… 好了废话不多说直接上教程，经历过的坑感兴趣的可以看文章结尾，让我们抬起头一起迎接初升的太阳~~~ 1. 我的系统环境 操作系统： deepin os 15.3 ifconfig：12345678910111213enp2s0f1: flags=... inet ... inet6 ... inet6 ... ether ...lo: flags=... inet ... inet6 ... loop ...wlp3s0: flags=... ether ... 上面是我的ifconfig信息，不用管具体内容(反正我已经打了马赛克)，你只需要知道的是平常所说的wlan0对应的就是wlp3s0，eth0对应enp2s0f1。之前就是因为不知道这个对应关系才折腾了那么久5555555～～～ 2. create_ap神器贴上github地址：create_ap 下载源代码 1git clone https://github.com/oblique/create_ap 安装create_ap 12cd create_apmake install 设置wifi1sudo create_ap wlp3s0 enp2s0f1 your_ap_name your_ap_password your_ap_name：你要设置的热点名称your_ap_password：密码建议将上面的命令保存成文件，这样就不需要每次都敲这么多文字了。 设置后输出正常的结果你得到的输出应该是这个样子：12345678910111213141516171819Config dir: /tmp/create_ap.wlp3s0.conf.ggodz80KPID: 6682Creating a virtual WiFi interface... ap0 created.Network Manager found, set ap0 as unmanaged device... DONEdnsmasq: Symbol `nettle_hashes' has different size in shared object, consider re-linkingSharing Internet using method: natdnsmasq: Symbol `nettle_hashes' has different size in shared object, consider re-linkinghostapd command-line interface: hostapd_cli -p /tmp/create_ap.wlp3s0.conf.ggodz80K/hostapd_ctrlConfiguration file: /tmp/create_ap.wlp3s0.conf.ggodz80K/hostapd.confUsing interface ap0 with hwaddr ... and ssid "your_ap_name"WARN: Low entropy detected. We recommend you to install `haveged'ap0: interface state UNINITIALIZED-&gt;ENABLEDmark textap0: AP-ENABLEDap0: STA ... IEEE 802.11: authenticatedap0: STA ... IEEE 802.11: associated (aid 1)ap0: AP-STA-CONNECTED a4:44:d1:39:8b:1dap0: STA... RADIUS: starting accounting session 58CA7D65-00000000ap0: STA... WPA: pairwise key handshake completed (RSN)ap0: STA... WPA: group key handshake completed (RSN) 写在最后：有用的话麻烦点个赞，想转载就转载，给个文章原地址就行了。文章原地址http://blog.163.com/hexin_mars_blog/blog/static/248215040201721681610895/#]]></content>
-    </entry>
-
-    
-    <entry>
       <title><![CDATA[c++学习笔记之多态篇]]></title>
       <url>%2Fblog%2F2017%2F03%2F26%2Fc-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%A4%9A%E6%80%81%E7%AF%87%2F</url>
       <content type="text"></content>
@@ -31,6 +24,13 @@
 
     
     <entry>
+      <title><![CDATA[deepin系统下如何设置wifi热点（亲测有效）]]></title>
+      <url>%2Fblog%2F2017%2F03%2F19%2Fdeepin%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AEwifi%2F</url>
+      <content type="text"><![CDATA[首先必须吐槽一下linux下设置wifi太累了。。。。来来回回折腾了我好久的说。心累… 好了废话不多说直接上教程，经历过的坑感兴趣的可以看文章结尾，让我们抬起头一起迎接初升的太阳~~~ 1. 我的系统环境 操作系统： deepin os 15.3 ifconfig：12345678910111213enp2s0f1: flags=... inet ... inet6 ... inet6 ... ether ...lo: flags=... inet ... inet6 ... loop ...wlp3s0: flags=... ether ... 上面是我的ifconfig信息，不用管具体内容(反正我已经打了马赛克)，你只需要知道的是平常所说的wlan0对应的就是wlp3s0，eth0对应enp2s0f1。之前就是因为不知道这个对应关系才折腾了那么久5555555～～～ 2. create_ap神器贴上github地址：create_ap 下载源代码 1git clone https://github.com/oblique/create_ap 安装create_ap 12cd create_apmake install 设置wifi1sudo create_ap wlp3s0 enp2s0f1 your_ap_name your_ap_password your_ap_name：你要设置的热点名称your_ap_password：密码建议将上面的命令保存成文件，这样就不需要每次都敲这么多文字了。 设置后输出正常的结果你得到的输出应该是这个样子：12345678910111213141516171819Config dir: /tmp/create_ap.wlp3s0.conf.ggodz80KPID: 6682Creating a virtual WiFi interface... ap0 created.Network Manager found, set ap0 as unmanaged device... DONEdnsmasq: Symbol `nettle_hashes' has different size in shared object, consider re-linkingSharing Internet using method: natdnsmasq: Symbol `nettle_hashes' has different size in shared object, consider re-linkinghostapd command-line interface: hostapd_cli -p /tmp/create_ap.wlp3s0.conf.ggodz80K/hostapd_ctrlConfiguration file: /tmp/create_ap.wlp3s0.conf.ggodz80K/hostapd.confUsing interface ap0 with hwaddr ... and ssid "your_ap_name"WARN: Low entropy detected. We recommend you to install `haveged'ap0: interface state UNINITIALIZED-&gt;ENABLEDmark textap0: AP-ENABLEDap0: STA ... IEEE 802.11: authenticatedap0: STA ... IEEE 802.11: associated (aid 1)ap0: AP-STA-CONNECTED a4:44:d1:39:8b:1dap0: STA... RADIUS: starting accounting session 58CA7D65-00000000ap0: STA... WPA: pairwise key handshake completed (RSN)ap0: STA... WPA: group key handshake completed (RSN) 写在最后：有用的话麻烦点个赞，想转载就转载，给个文章原地址就行了。文章原地址http://blog.163.com/hexin_mars_blog/blog/static/248215040201721681610895/#]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[Hello World]]></title>
       <url>%2Fblog%2F2017%2F03%2F19%2Fhello-world%2F</url>
       <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
@@ -47,7 +47,7 @@
     <entry>
       <title><![CDATA[c++学习笔记之内存管理]]></title>
       <url>%2Fblog%2F2017%2F03%2F12%2Fc-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%2F</url>
-      <content type="text"><![CDATA[一、const常量如图所示，const有两种使用情况，总结起来就是const离谁近，就作用于谁，具体看下面示例： const int * p const作用于p，所以 p不能变化，但是p可以重新赋值 int * const pconst作用于p，所以p不能变化 const int * const p这种情况下，p和*p都能不重新赋值。 为更好理解，下面给出一道例题： 二、内存管理 c与c++的区别 单个变量内存的申请和释放 块内存的申请和释放 注意事项 1.在申请完内存后，不仅需要注意释放内存，另外还需要注意判断内存是否成功申请,另外如果没有申请成功，仍然需要对指针做释放操作和重定向为NULL.1234567891011121314// 申请内存int *arr = new int[1000];// 判断申请成功与否if(arr==NULL) // 申请失败&#123; cout&lt;&lt;"内存申请失败"&lt;&lt;endl; // 异常处理&#125;// 释放指针delete []arr;// 重定向arr = NULL; 2.new运算符申请的内存是在堆中申请的。 written by MARSGGBO2017-3-11]]></content>
+      <content type="text"><![CDATA[一、const常量如图所示，const有两种使用情况，总结起来就是const离谁近，就作用于谁，具体看下面示例： const int * p const作用于 p ，所以 p 不能变化，但是p可以重新赋值 int * const pconst作用于p，所以p不能变化 const int * const p这种情况下，p和*p都能不重新赋值。 为更好理解，下面给出一道例题： 二、内存管理 c与c++的区别 单个变量内存的申请和释放 块内存的申请和释放 注意事项 1.在申请完内存后，不仅需要注意释放内存，另外还需要注意判断内存是否成功申请,另外如果没有申请成功，仍然需要对指针做释放操作和重定向为NULL.1234567891011121314// 申请内存int *arr = new int[1000];// 判断申请成功与否if(arr==NULL) // 申请失败&#123; cout&lt;&lt;"内存申请失败"&lt;&lt;endl; // 异常处理&#125;// 释放指针delete []arr;// 重定向arr = NULL; 2.new运算符申请的内存是在堆中申请的。 written by MARSGGBO2017-3-11]]></content>
     </entry>
 
     
